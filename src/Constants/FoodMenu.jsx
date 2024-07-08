@@ -27,18 +27,6 @@ const FoodMenu = [
     id: '7',
     name: 'Soup'
  },
- {
-    id: '8',
-    name: 'Soup'
- },
- {
-    id: '9',
-    name: 'Soup'
- },
- {
-    id: '10',
-    name: 'Soup'
- },
 ]
 
 export default FoodMenu;
