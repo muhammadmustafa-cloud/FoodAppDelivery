@@ -52,7 +52,7 @@ const DrawerNavigation = () => {
                 <FontAwesome name='home' size={30} color={Color.white} />
             )
         }} 
-        component={Home} 
+        component={BottomTabNavigation} 
         />
         <Drawer.Screen name='Profile' options={{
             drawerLabel: 'Profile',
