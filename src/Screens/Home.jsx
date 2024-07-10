@@ -9,7 +9,7 @@ import FoodMenu from '../Constants/FoodMenu'
 import { FoodCartItems } from '../Constants/FoodMenu'
 // import Carousel from 'react-native-snap-carousel';
 import MenuItemCards from '../Components/MenuItemCards'
-const Home = () => {
+const Home = ({navigation}) => {
   const [activeMenu, setActiveMenu] = useState(1)
   return (
     <DrawerScreenWrapper>
@@ -37,28 +37,14 @@ const Home = () => {
             }}
           />
         </View>
-        {/* Food Items Cards */}
-        {/* <View style={{ marginTop: 15, paddingHorizontal: 5 }}>
-          <Carousel
-            containerCustomStyle={{ overflow: 'visible' }}
-            data={FoodCartItems}
-            renderItem={({ item }) => <MenuItemCards item={item} />}
-            firstItem={1}
-            inactiveSlideOpacity={0.75}
-            inactiveSlideScale={0.77}
-            sliderWidth={400}
-            itemWidth={260}
-            slideStyle={{ display: 'flex', alignItems: 'center' }}
-          />
-        </View> */}
-
+        
         <ScrollView
         contentContainerStyle={{paddingHorizontal:20}}
         horizontal 
         showsHorizontalScrollIndicator={false}
         >
           {
-            FoodCartItems.map((item, index)=> <MenuItemCards item={item} index={index} key={index}/>)
+            FoodCartItems.map((item, index)=> <MenuItemCards item={item} navigation={navigation} index={index} key={index}/>)
           }
         </ScrollView>
       </View>

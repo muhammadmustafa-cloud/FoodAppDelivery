@@ -8,22 +8,22 @@ import bgImg1 from '../../assets/images/toyface1.png';
 import bgImg2 from '../../assets/images/toyface2.png';
 const WelcomePage = ({ navigation }) => {
   return (
-    <View style={styles.welcomeContainer}>
-      <View style={styles.mainContainer}>
-        <View style={styles.logoContainer}>
-          <Image source={logo} style={styles.logoImage} />
+    <View style={{ flex: 1 }}>
+      <View style={styles.welcomeContainer}>
+        <View style={styles.mainContainer}>
+          <View style={styles.logoContainer}>
+            <Image source={logo} style={styles.logoImage} />
+          </View>
+          <Text style={styles.mainHeading}>Food for Everyone</Text>
         </View>
-        <Text style={styles.mainHeading}>Food for Everyone</Text>
-      </View>
-      <View style={styles.bgImgContainer}>
-        {/* <Image source={bgImg1} style={styles.bgImg1} />
+        <View style={styles.bgImgContainer}>
+          {/* <Image source={bgImg1} style={styles.bgImg1} />
         <Image source={bgImg2} style={styles.bgImg2} /> */}
-      </View>
-      <TouchableOpacity onPress={() => navigation.navigate('Login')} style={styles.btnContainer}>
-        <View style={styles.loginBtn}>
-          <Text style={styles.btnText}>Get Started</Text>
         </View>
-      </TouchableOpacity>
+        <TouchableOpacity activeOpacity={1} onPress={()=> navigation.navigate("Login")} style={styles.btnContainer}>
+          <Text style={styles.btnText}>Update</Text>
+        </TouchableOpacity>
+      </View>
     </View>
   )
 }
@@ -78,25 +78,20 @@ const styles = StyleSheet.create({
   //   right:100
   // },
   btnContainer: {
-    display: 'flex',
-    justifyContent: 'flex-end',
+    position: 'absolute',
+    bottom: 20,
+    left: "10%",
+    right: "10%",
+    marginHorizontal: 'auto',
     alignItems: 'center',
-    alignSelf: 'center',
-    width: "80%",
-    height: "10%"
-  },
-  loginBtn: {
-    backgroundColor: '#fff',
-    width: '100%',
-    height: '80%',
+    paddingVertical: 20,
+    backgroundColor: Color.white,
     borderRadius: 30,
-    justifyContent: 'center',
-    alignItems: 'center',
-    
+    // width: "80%"
   },
   btnText: {
     fontFamily: 'SFProDisplay-Bold',
     fontSize: 18,
     color: Color.orangeColor,
-  }
+  },
 })

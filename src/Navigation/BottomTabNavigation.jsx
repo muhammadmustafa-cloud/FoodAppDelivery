@@ -10,6 +10,7 @@ import Color from '../Constants/Color';
 import LikedItems from '../Screens/LikedItems';
 import Profile from '../Screens/Profile';
 import Order from '../Screens/Order';
+import MainProfile from '../Screens/MainProfile';
 
 const Tab = createBottomTabNavigator();
 
@@ -70,13 +71,15 @@ const BottomTabNavigation = () => {
         }}
       />
       <Tab.Screen 
-        name='Profile' 
-        component={Profile} 
+        name='MainProfile' 
+        component={MainProfile} 
         options={{
           tabBarIcon: ({ focused }) => (
             <Feather name="user" color={focused ? Color.orangeColor : Color.iconColor} size={28} />
           ),
+          tabBarStyle: {display: 'none'},
           headerShown: true,
+          headerTitle: '',
           headerLeft: () => <BackButton />
         }}
       />

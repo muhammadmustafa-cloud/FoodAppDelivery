@@ -4,9 +4,7 @@ import cartItems from '../../assets/images/cartItems.png'
 const LikedItems = () => {
   return (
     <View>
-      <View>
-        <Image source={cartItems}/>
-      </View>
+      
     </View>
   )
 }
