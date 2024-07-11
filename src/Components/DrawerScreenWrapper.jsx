@@ -15,6 +15,7 @@ const DrawerScreenWrapper = ({ children }) => {
         ],
         borderRadius: interpolate(progress.value, [0, 1], [0, 20], 'clamp'),
         overflow: 'hidden',
+        // elevation: 10
         
     }))
     return (

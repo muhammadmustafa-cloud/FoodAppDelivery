@@ -8,6 +8,7 @@ import WelcomePage from '../Screens/Welcome';
 import Login from '../Screens/Login';
 import Profile from '../Screens/Profile';
 import FoodItemDetails from '../Screens/FoodItemDetails';
+import Cart from '../Screens/Cart';
 
 const Stack = createNativeStackNavigator();
 
@@ -21,9 +22,9 @@ const AppNavigation = () => {
         <Stack.Screen name='Welcome' component={WelcomePage} />
         <Stack.Screen name='Login' component={Login} />
         <Stack.Screen name='Main' component={DrawerNavigation} />
-        <Stack.Screen name='Profile' options={{headerShown:true}} component={Profile} />
-        <Stack.Screen name='FoodItemDetails' options={{headerShown: true}} component={FoodItemDetails} />
-
+        <Stack.Screen name='Profile' options={{ headerShown: true }} component={Profile} />
+        <Stack.Screen name='FoodItemDetails' options={{ headerShown: true }} component={FoodItemDetails} />
+        <Stack.Screen name='Cart' options={{ headerShown: true }} component={Cart} />
       </Stack.Navigator>
     </NavigationContainer>
   )

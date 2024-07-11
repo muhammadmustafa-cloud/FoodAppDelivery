@@ -144,10 +144,7 @@ const styles = StyleSheet.create({
     height: '18%',
     borderRadius: 30,
   },
-  loginBtn: {
-    justifyContent: 'center',
-    alignItems: 'center'
-  },
+
   btnText: {
     fontFamily: 'SFProDisplay-Bold',
     fontSize: 18,

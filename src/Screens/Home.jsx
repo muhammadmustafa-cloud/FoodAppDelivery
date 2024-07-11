@@ -13,7 +13,7 @@ const Home = ({navigation}) => {
   const [activeMenu, setActiveMenu] = useState(1)
   return (
     <DrawerScreenWrapper>
-      <View style={{ flex: 1, backgroundColor: Color.grayColor }}>
+      <View style={{ flex: 1, backgroundColor: Color.grayColor,  }}>
         <Header />
         <View style={{ marginTop: 5 }}>
           <Text style={{ fontFamily: 'SFProDisplay-Semibold', fontSize: 40, paddingHorizontal: '12%', color: "#000", marginBottom: 15 }}>Delicious {"\n"}food for you</Text>

@@ -11,6 +11,7 @@ import LikedItems from '../Screens/LikedItems';
 import Profile from '../Screens/Profile';
 import Order from '../Screens/Order';
 import MainProfile from '../Screens/MainProfile';
+import DrawerScreenWrapper from '../Components/DrawerScreenWrapper';
 
 const Tab = createBottomTabNavigator();
 
@@ -47,6 +48,7 @@ const BackButton = () => {
 
 const BottomTabNavigation = () => {
   return (
+    <DrawerScreenWrapper>
     <Tab.Navigator screenOptions={screenOptions}>
       <Tab.Screen 
         name='DrawerHome' 
@@ -95,6 +97,7 @@ const BottomTabNavigation = () => {
         }}
       />
     </Tab.Navigator>
+    </DrawerScreenWrapper>
   )
 }
 

@@ -31,6 +31,7 @@ const DrawerNavigation = () => {
   return (
     <Drawer.Navigator
       screenOptions={{
+        swipeEnabled: false,
         drawerActiveBackgroundColor: 'transparent',
         drawerInactiveBackgroundColor: 'transparent',
         drawerHideStatusBarOnOpen: true,
@@ -40,7 +41,7 @@ const DrawerNavigation = () => {
           width: "60%"
         },
         sceneContainerStyle: {
-          backgroundColor: 'transparent',
+          backgroundColor: Color.orangeColor,
         },
         drawerType: 'slide',
         headerStyle: {
@@ -53,6 +54,7 @@ const DrawerNavigation = () => {
           fontFamily: "SFProDisplay-Medium",
           marginLeft: -10,
         },
+
       }}
     >
       <Drawer.Screen name='Home' options={{
