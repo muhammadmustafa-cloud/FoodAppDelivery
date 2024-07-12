@@ -21,7 +21,7 @@ const WelcomePage = ({ navigation }) => {
         <Image source={bgImg2} style={styles.bgImg2} /> */}
         </View>
         <TouchableOpacity activeOpacity={1} onPress={()=> navigation.navigate("Login")} style={styles.btnContainer}>
-          <Text style={styles.btnText}>Update</Text>
+          <Text style={styles.btnText}>Get Started</Text>
         </TouchableOpacity>
       </View>
     </View>

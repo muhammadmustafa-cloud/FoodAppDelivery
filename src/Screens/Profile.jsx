@@ -7,7 +7,7 @@ import RadioBtn from '../Components/RadioBtn';
 const Profile = () => {
   return (
     <View style={{ flex: 1 }}>
-      {/* <ScrollView contentContainerStyle={{ flexGrow: 1, justifyContent: 'space-between' }}> */}
+        
         <View style={{ marginHorizontal: 'auto', width: "80%", marginTop: "5%" }}>
           <Text style={{ color: Color.black, fontFamily: 'SFProDisplay-Semibold', fontSize: 20, marginBottom: 10 }}>Information</Text>
           <View style={{ backgroundColor: Color.white, paddingVertical: 20, paddingHorizontal: 10, borderRadius: 15, marginBottom: "14%" }}>
@@ -25,7 +25,6 @@ const Profile = () => {
             <RadioBtn />
           </View>
         </View>
-      {/* </ScrollView> */}
       <TouchableOpacity style={styles.btnContainer}>
         <Text style={styles.btnText}>Update</Text>
       </TouchableOpacity>

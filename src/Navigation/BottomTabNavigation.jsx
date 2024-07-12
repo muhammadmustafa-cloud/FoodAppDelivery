@@ -4,6 +4,7 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 import Home from '../Screens/Home';
 import FontAwesome from 'react-native-vector-icons/FontAwesome'
 import Feather from 'react-native-vector-icons/Feather'
+import MaterialIcons from 'react-native-vector-icons/MaterialIcons'
 import Entypo from 'react-native-vector-icons/Entypo'
 import { useNavigation } from '@react-navigation/native';
 import Color from '../Constants/Color';
@@ -41,7 +42,7 @@ const BackButton = () => {
   const navigation = useNavigation();
   return (
     <TouchableOpacity onPress={() => navigation.goBack()} style={{ marginLeft: 20 }}>
-      <Feather name="arrow-left" size={24} color={Color.iconColor} />
+      <MaterialIcons name='keyboard-arrow-left' size={33} color={Color.black} />
     </TouchableOpacity>
   )
 }
@@ -68,6 +69,7 @@ const BottomTabNavigation = () => {
           tabBarIcon: ({ focused }) => (
             <Feather name="heart" color={focused ? Color.orangeColor : Color.iconColor} size={28} />
           ),
+          tabBarStyle: {display: 'none'}, 
           headerShown: true,
           headerLeft: () => <BackButton />
         }}
@@ -93,6 +95,7 @@ const BottomTabNavigation = () => {
             <Entypo name="back-in-time" color={focused ? Color.orangeColor : Color.iconColor} size={28} />
           ),
           headerShown: true,
+          tabBarStyle: {display: 'none'},
           headerLeft: () => <BackButton />
         }}
       />

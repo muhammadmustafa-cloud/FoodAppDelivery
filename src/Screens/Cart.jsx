@@ -8,10 +8,11 @@ import { GestureHandlerRootView, PanGestureHandler } from 'react-native-gesture-
 import Animated, { useAnimatedGestureHandler, useAnimatedStyle, useSharedValue, withTiming } from 'react-native-reanimated';
 import AntDesign from 'react-native-vector-icons/AntDesign'
 
-const Cart = () => {
+const Cart = ({navigation}) => {
     const width = Dimensions.get('window').width;
     const translateX = useSharedValue(0);
     const itemHeight = useSharedValue(130);
+    const viewMarginBottom = useSharedValue("5%")
     const translate_X_threshold = -width * .3;
     const opacity = useSharedValue(1);
     const panGesture = useAnimatedGestureHandler({
@@ -23,6 +24,7 @@ const Cart = () => {
             if (shouldBeDismissed) {
                 translateX.value = withTiming(-width)
                 itemHeight.value = withTiming(0)
+                viewMarginBottom.value = withTiming(0)
                 opacity.value = withTiming(0)
             }
             else {
@@ -45,7 +47,8 @@ const Cart = () => {
     const rtaskContainerStyle = useAnimatedStyle(() => {
         return {
             height: itemHeight.value,
-            opacity: opacity.value
+            marginBottom: viewMarginBottom.value,
+            opacity: opacity.value,
 
         }
     })
@@ -57,7 +60,7 @@ const Cart = () => {
                         <Image source={swipeIcon} style={{ width: 20, height: 20 }} />
                         <Text style={{ color: Color.black, fontFamily: 'SFProDisplay-Light' }}>swipe on an item to delete</Text>
                     </View>
-                    <Animated.View style={[{ width: '80%', marginHorizontal: 'auto', marginBottom: "5%", display: 'flex', justifyContent: 'center' }, rtaskContainerStyle]}>
+                    <Animated.View style={[{ width: '80%', marginHorizontal: 'auto', display: 'flex', justifyContent: 'center' }, rtaskContainerStyle]}>
                         <Animated.View style={[styles.iconContainer, rIconContainerStyle]}>
                             <AntDesign style={styles.icon} name="heart" size={30} color={Color.white} />
                         </Animated.View>
@@ -99,7 +102,7 @@ const Cart = () => {
                     </View>
 
                 </View>
-                <TouchableOpacity activeOpacity={0.8} style={styles.btnContainer}>
+                <TouchableOpacity onPress={()=> navigation.navigate('Checkout')} activeOpacity={0.8} style={styles.btnContainer}>
                     <Text style={styles.btnText}>Complete Order</Text>
                 </TouchableOpacity>
             </View>
@@ -137,8 +140,5 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center',
         borderRadius: 30,
-
-
-
     }
 })

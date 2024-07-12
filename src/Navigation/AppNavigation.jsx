@@ -9,6 +9,8 @@ import Login from '../Screens/Login';
 import Profile from '../Screens/Profile';
 import FoodItemDetails from '../Screens/FoodItemDetails';
 import Cart from '../Screens/Cart';
+import Checkout from '../Screens/Checkout';
+// import PaymentSelect from '../Screens/PaymentSelect';
 
 const Stack = createNativeStackNavigator();
 
@@ -25,6 +27,8 @@ const AppNavigation = () => {
         <Stack.Screen name='Profile' options={{ headerShown: true }} component={Profile} />
         <Stack.Screen name='FoodItemDetails' options={{ headerShown: true }} component={FoodItemDetails} />
         <Stack.Screen name='Cart' options={{ headerShown: true }} component={Cart} />
+        <Stack.Screen name='Checkout' options={{headerShown: true}} component={Checkout}/>
+        {/* <Stack.Screen name='Checkout' options={{headerShown: true}} component={PaymentSelect }/> */}
       </Stack.Navigator>
     </NavigationContainer>
   )

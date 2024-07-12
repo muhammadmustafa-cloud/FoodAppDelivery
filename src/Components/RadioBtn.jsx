@@ -19,6 +19,7 @@ const RadioBtn = () => {
                     value="first"
                     status={checked === 'first' ? 'checked' : 'unchecked'}
                     onPress={() => setChecked('first')}
+                    color= {Color.orangeColor}
                 />
                 <View style={{ flexDirection: 'row', borderBottomWidth: 1, paddingBottom: 10, borderColor: Color.grayColor, width: "80%", alignItems: 'center', gap: 10 }}>
                     <View style={{ width: 40, height: 40, backgroundColor: "#F47B0A", justifyContent: 'center', alignItems: 'center', borderRadius: 10, padding: 10 }}>
@@ -37,10 +38,11 @@ const RadioBtn = () => {
                     value="second"
                     status={checked === 'second' ? 'checked' : 'unchecked'}
                     onPress={() => setChecked('second')}
+                    color= {Color.orangeColor}
                 />
                 <View style={{ flexDirection: 'row', borderBottomWidth: 1, paddingBottom: 10, borderColor: Color.grayColor, width: "80%", alignItems: 'center', gap: 10 }}>
                     <View style={{ width: 40, height: 40, backgroundColor: "#EB4796", justifyContent: 'center', alignItems: 'center', borderRadius: 10, padding: 10 }}>
-                        <FontAwesome name="bank" color={Color.white} size={20} />
+                        <FontAwesome name="bank" color={Color.white} size={18} />
                     </View>
                     <Text style={{ fontFamily: 'SFProDisplay-Regular', fontSize: 16 }}>Bank Account</Text>
                 </View>
@@ -55,6 +57,7 @@ const RadioBtn = () => {
                     value="third"
                     status={checked === 'third' ? 'checked' : 'unchecked'}
                     onPress={() => setChecked('third')}
+                    color= {Color.orangeColor}
                 />
                 <View style={{ flexDirection: 'row', paddingBottom: 10, borderColor: Color.grayColor, width: "80%", alignItems: 'center', gap: 10 }}>
                     <View style={{ width: 40, height: 40, backgroundColor: "#0038FF", justifyContent: 'center', alignItems: 'center', borderRadius: 10, padding: 10 }}>

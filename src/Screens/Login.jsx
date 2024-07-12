@@ -27,11 +27,11 @@ const Login = ({ navigation }) => {
           loggedIn ? (
             <>
               <View style={styles.inputFieldsContainer}>
-                <Text style={{ color: '#000' }}>Email Address</Text>
+                <Text style={{ color: '#000', marginBottom: 10 }}>Email Address</Text>
                 <TextInput style={styles.textInputField} />
               </View>
               <View style={styles.inputFieldsContainer}>
-                <Text style={{ color: '#000' }}>Password</Text>
+                <Text style={{ color: '#000', marginBottom: 10  }}>Password</Text>
                 <TextInput secureTextEntry={true} style={styles.textInputField} />
               </View>
               <Text style={styles.forgotPasscode}>Forgot passcode?</Text>
@@ -44,11 +44,11 @@ const Login = ({ navigation }) => {
             (
               <>
                 <View style={styles.inputFieldsContainer}>
-                  <Text style={{ color: '#000' }}>User Name</Text>
+                  <Text style={{ color: '#000', marginBottom: 10 }}>User Name</Text>
                   <TextInput style={styles.textInputField} />
                 </View>
                 <View style={styles.inputFieldsContainer}>
-                  <Text style={{ color: '#000' }}>Email Address</Text>
+                  <Text style={{ color: '#000', marginBottom: 10 }}>Email Address</Text>
                   <TextInput secureTextEntry={true} style={styles.textInputField} />
                 </View>
                 <Text style={styles.forgotPasscode}>Forgot passcode?</Text>
@@ -119,7 +119,7 @@ const styles = StyleSheet.create({
     width: "80%",
     marginHorizontal: 'auto',
     marginTop: '3%',
-    justifyContent: 'space-evenly'
+    gap: 20
   },
   inputFieldsContainer: {
     marginBottom: '8%'
@@ -134,21 +134,22 @@ const styles = StyleSheet.create({
     color: Color.orangeColor
   },
   btnContainer: {
-    display: 'flex',
+    position: 'absolute',
+    left: '10%',
+    right: '10%',
+    bottom: 20,
     justifyContent: 'center',
     alignItems: 'center',
-    // borderWidth: 2,
-    padding: 0,
+    paddingVertical: 20,
     backgroundColor: Color.orangeColor,
-    width: '100%',
-    height: '18%',
     borderRadius: 30,
+ 
   },
 
   btnText: {
     fontFamily: 'SFProDisplay-Bold',
     fontSize: 18,
-    bottom: 0,
+    color: Color.white
   }
 
 })

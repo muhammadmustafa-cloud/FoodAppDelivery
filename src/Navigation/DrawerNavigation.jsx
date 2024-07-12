@@ -22,7 +22,7 @@ const BackButton = () => {
   const navigation = useNavigation();
   return (
     <TouchableOpacity onPress={() => navigation.goBack()} style={{ marginLeft: 20 }}>
-      <Feather name="arrow-left" size={24} color={Color.iconColor} />
+      <MaterialIcons name="keyboard-arrow-left" size={33} color={Color.black} />
     </TouchableOpacity>
   );
 };
@@ -100,6 +100,15 @@ const DrawerNavigation = () => {
       <Drawer.Screen name='Offers' options={{
         drawerLabel: 'Offers',
         title: 'Offers',
+        headerShadowVisible: false,
+        headerLeft: () => <BackButton />,
+        headerTitleAlign: 'center',
+        headerStyle: {
+          backgroundColor: Color.grayColor,
+          elevation: 0, // Remove shadow on Android
+          shadowOpacity: 0, // Remove shadow on iOS
+        },
+        headerTitle: '',
         headerShadowVisible: false,
         drawerIcon: () => (
           <MaterialIcons name='local-offer' size={30} color={Color.white} />
