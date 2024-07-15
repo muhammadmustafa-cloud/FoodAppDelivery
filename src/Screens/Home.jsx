@@ -7,10 +7,10 @@ import Header from '../Components/Header'
 import DrawerScreenWrapper from '../Components/DrawerScreenWrapper'
 import FoodMenu from '../Constants/FoodMenu'
 import { FoodCartItems } from '../Constants/FoodMenu'
-// import Carousel from 'react-native-snap-carousel';
 import MenuItemCards from '../Components/MenuItemCards'
 const Home = ({navigation}) => {
-  const [activeMenu, setActiveMenu] = useState(1)
+  const [activeMenu, setActiveMenu] = useState('Foods')
+  const filterItem = FoodCartItems.filter(item => item.category === activeMenu)
   return (
     <DrawerScreenWrapper>
       <View style={{ flex: 1, backgroundColor: Color.grayColor,  }}>
@@ -19,7 +19,7 @@ const Home = ({navigation}) => {
           <Text style={{ fontFamily: 'SFProDisplay-Semibold', fontSize: 40, paddingHorizontal: '12%', color: "#000", marginBottom: 15 }}>Delicious {"\n"}food for you</Text>
           <Searchbar placeholder='Search' style={{ width: '80%', alignSelf: 'center', marginBottom: '10%' }} />
         </View>
-        <View style={{ marginHorizontal: 9, marginTop: 8 }}>
+        <View style={{ marginHorizontal: 9, marginTop: '1%', marginBottom: '7%' }}>
           <FlatList
             horizontal
             showsHorizontalScrollIndicator={false}
@@ -27,10 +27,10 @@ const Home = ({navigation}) => {
             keyExtractor={item => item.id}
             style={{ overflow: 'visible' }}
             renderItem={({ item }) => {
-              let isActive = item.id == activeMenu;
+              let isActive = item.name == activeMenu;
               let activeTextClass = isActive ? Color.white : Color.orangeColor
               return (
-                <TouchableOpacity onPress={() => setActiveMenu(item.id)} style={{ backgroundColor: isActive ? Color.orangeColor : Color.white, padding: 6, paddingHorizontal: 15, borderRadius: 50, marginRight: 18, }}>
+                <TouchableOpacity onPress={() => setActiveMenu(item.name)} style={{ backgroundColor: isActive ? Color.orangeColor : Color.white, padding: 6, paddingHorizontal: 15, borderRadius: 50, marginRight: 18, }}>
                   <Text style={{ color: activeTextClass, fontFamily: 'SFProDisplay-Medium' }}> {item.name} </Text>
                 </TouchableOpacity>
               )
@@ -44,7 +44,7 @@ const Home = ({navigation}) => {
         showsHorizontalScrollIndicator={false}
         >
           {
-            FoodCartItems.map((item, index)=> <MenuItemCards item={item} navigation={navigation} index={index} key={index}/>)
+            filterItem.map((item, index)=> <MenuItemCards item={item} navigation={navigation} index={index} key={index}/>)
           }
         </ScrollView>
       </View>

@@ -25,23 +25,24 @@ const Checkout = ({ navigation }) => {
             >
                 <View style={styles.modalOverlay}>
                     <View style={styles.modalContent}>
-                        <View style={{ backgroundColor: "#EDEDED", paddingVertical: "5%" }}>
-                            <Text style={{ color: Color.black }}>Please note</Text>
+                        <View style={{ backgroundColor: "#EDEDED", paddingVertical: "5%", paddingHorizontal: '8%', borderTopLeftRadius: 20, borderTopRightRadius: 20  }}>
+                            <Text style={{ color: Color.black,  }}>Please note</Text>
                         </View>
-                        <View>
+                        <View style={{paddingHorizontal: "8%", marginVertical: '5%', borderColor: Color.iconColor}}>
                             <Text style={{ color: Color.iconColor, textTransform: 'uppercase' }}>Delivery to Mainland</Text>
                             <Text style={{ color: Color.black }}> N1000 - N2000</Text>
                         </View>
-                        <View>
+                        <View style={{height: 0.5, backgroundColor: 'black', marginHorizontal: '8%', marginBottom: '5%' }}/>
+                        <View style={{paddingHorizontal: "8%", marginBottom: '5%'}}>
                             <Text style={{ color: Color.iconColor, textTransform: 'uppercase' }}>Delivery to island</Text>
                             <Text style={{ color: Color.black }}> N2000 - N3000</Text>
                         </View>
-                        <View style={{display: 'flex', flexDirection: 'row', justifyContent: 'space-around'}}>
-                        <TouchableOpacity>
-                            <Text style={{color:Color.iconColor}}>Cancel</Text>
+                        <View style={{display: 'flex', flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center' ,paddingHorizontal: "8%", marginBottom: '4%'}}>
+                        <TouchableOpacity onPress={setModalVisible}>
+                            <Text style={{color:Color.iconColor, color: 'rgba(0,0,0,1)'}}>Cancel</Text>
                         </TouchableOpacity>
                         <TouchableOpacity >
-                            <Text style={{color:Color.iconColor}}>Proceed</Text>
+                            <Text style={{color:Color.iconColor, backgroundColor: Color.orangeColor, color: Color.white, paddingHorizontal: '7%', paddingVertical: "3%", borderRadius: 50}}>Proceed</Text>
                         </TouchableOpacity>
                         </View>
                     </View>
@@ -119,7 +120,8 @@ const styles = StyleSheet.create({
         backgroundColor: Color.white,
         // justifyContent: 'center',
         // alignItems: 'center',
-        borderRadius: 10,
+        borderRadius: 20,
+        // paddingHorizontal: 10
     },
     modalCloseBtn: {
         marginTop: 20,

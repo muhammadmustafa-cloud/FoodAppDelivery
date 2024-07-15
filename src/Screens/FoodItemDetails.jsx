@@ -4,13 +4,13 @@ import FoodItemSlider from '../Components/FoodItemSLider';
 import Color from '../Constants/Color';
 
 
-const FoodItemDetails = ({navigation}) => {
-    const width = Dimensions.get('window').width;
+const FoodItemDetails = ({route,navigation}) => {
+    const {item} = route.params
 
     return (
         <View style={styles.container}>
             <View style={styles.sliderContainer}>
-                <FoodItemSlider />
+                <FoodItemSlider images = {item.images}/>
             </View>
             <View style={styles.detailsContainer}>
                 <Text style={styles.title}>Veggie tomato mix</Text>
@@ -37,7 +37,9 @@ const styles = StyleSheet.create({
     },
     sliderContainer: {
         width: '100%',
-        height: 300,
+        height: 280,
+        borderWidth: 1,
+        borderColor: 'red'
     },
     detailsContainer: {
         // marginTop: 20,
@@ -46,17 +48,21 @@ const styles = StyleSheet.create({
     title: {
         fontSize: 24,
         fontWeight: 'bold',
+        color: Color.black,
+        textAlign: 'center',
         // marginVertical: 10,
     },
     price: {
         fontSize: 22,
-        color: '#FF5733',
+        color: Color.orangeColor,
+        textAlign: 'center',
         // marginVertical: 10,
     },
     infoTitle: {
         fontSize: 16,
         fontWeight: 'bold',
         marginVertical: 10,
+        color: Color.black
     },
     infoText: {
         fontSize: 14,
