@@ -1,25 +1,40 @@
-import { FlatList, ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
-import React, { useState } from 'react'
-import Icon from 'react-native-vector-icons/FontAwesome'
-import Color from '../Constants/Color'
-import { Searchbar } from 'react-native-paper'
-import Header from '../Components/Header'
-import DrawerScreenWrapper from '../Components/DrawerScreenWrapper'
-import FoodMenu from '../Constants/FoodMenu'
-import { FoodCartItems } from '../Constants/FoodMenu'
-import MenuItemCards from '../Components/MenuItemCards'
-const Home = ({navigation}) => {
-  const [activeMenu, setActiveMenu] = useState('Foods')
-  const filterItem = FoodCartItems.filter(item => item.category === activeMenu)
+import React, { useState } from 'react';
+import { FlatList, ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import { Searchbar } from 'react-native-paper';
+import Header from '../Components/Header';
+import DrawerScreenWrapper from '../Components/DrawerScreenWrapper';
+import FoodMenu, { FoodCartItems } from '../Constants/FoodMenu';
+import MenuItemCards from '../Components/MenuItemCards';
+import Color from '../Constants/Color';
+
+const Home = ({ navigation }) => {
+  const [activeMenu, setActiveMenu] = useState('Foods');
+  const [searchQuery, setSearchQuery] = useState('');
+  const [filteredItems, setFilteredItems] = useState(FoodCartItems.filter(item => item.category === activeMenu));
+
+  const filterByCategory = category => {
+    setActiveMenu(category);
+    setSearchQuery('');
+    setFilteredItems(FoodCartItems.filter(item => item.category === category));
+  };
+
   return (
     <DrawerScreenWrapper>
       <View style={{ flex: 1, backgroundColor: Color.grayColor,  }}>
         <Header />
         <View style={{ marginTop: 5 }}>
-          <Text style={{ fontFamily: 'SFProDisplay-Semibold', fontSize: 40, paddingHorizontal: '12%', color: "#000", marginBottom: 15 }}>Delicious {"\n"}food for you</Text>
-          <Searchbar placeholder='Search' style={{ width: '80%', alignSelf: 'center', marginBottom: '10%' }} />
+          <Text style={styles.headerText}>Delicious {"\n"}food for you</Text>
+          <TouchableOpacity activeOpacity={0.9} onPress={() => navigation.navigate('SearchItems')}>
+            <Searchbar 
+              placeholder='Search' 
+              style={styles.searchbar} 
+              value={searchQuery}
+              editable={false} 
+              pointerEvents="none"
+            />
+          </TouchableOpacity>
         </View>
-        <View style={{ marginHorizontal: 9, marginTop: '1%', marginBottom: '7%' }}>
+        <View style={styles.menuContainer}>
           <FlatList
             horizontal
             showsHorizontalScrollIndicator={false}
@@ -27,31 +42,57 @@ const Home = ({navigation}) => {
             keyExtractor={item => item.id}
             style={{ overflow: 'visible' }}
             renderItem={({ item }) => {
-              let isActive = item.name == activeMenu;
-              let activeTextClass = isActive ? Color.white : Color.orangeColor
+              let isActive = item.name === activeMenu;
               return (
-                <TouchableOpacity onPress={() => setActiveMenu(item.name)} style={{ backgroundColor: isActive ? Color.orangeColor : Color.white, padding: 6, paddingHorizontal: 15, borderRadius: 50, marginRight: 18, }}>
-                  <Text style={{ color: activeTextClass, fontFamily: 'SFProDisplay-Medium' }}> {item.name} </Text>
+                <TouchableOpacity 
+                  onPress={() => filterByCategory(item.name)} 
+                  style={[styles.menuItem, { backgroundColor: isActive ? Color.orangeColor : Color.white }]}
+                >
+                  <Text style={{ color: isActive ? Color.white : Color.orangeColor, fontFamily: 'SFProDisplay-Medium' }}> 
+                    {item.name} 
+                  </Text>
                 </TouchableOpacity>
-              )
+              );
             }}
           />
         </View>
-        
-        <ScrollView
-        contentContainerStyle={{paddingHorizontal:20}}
-        horizontal 
-        showsHorizontalScrollIndicator={false}
-        >
-          {
-            filterItem.map((item, index)=> <MenuItemCards item={item} navigation={navigation} index={index} key={index}/>)
-          }
+        <ScrollView contentContainerStyle={styles.scrollViewContent} horizontal>
+          {filteredItems.map((item, index) => (
+            <MenuItemCards item={item} navigation={navigation} index={index} key={index} />
+          ))}
         </ScrollView>
       </View>
     </DrawerScreenWrapper>
-  )
-}
+  );
+};
 
-export default Home
+export default Home;
 
-const styles = StyleSheet.create({})
+const styles = StyleSheet.create({
+  headerText: {
+    fontFamily: 'SFProDisplay-Semibold',
+    fontSize: 40,
+    paddingHorizontal: '12%',
+    color: "#000",
+    marginBottom: 15,
+  },
+  searchbar: {
+    width: '80%',
+    alignSelf: 'center',
+    marginBottom: '10%',
+  },
+  menuContainer: {
+    marginHorizontal: 9,
+    marginTop: '1%',
+    marginBottom: '7%',
+  },
+  menuItem: {
+    padding: 6,
+    paddingHorizontal: 15,
+    borderRadius: 50,
+    marginRight: 18,
+  },
+  scrollViewContent: {
+    paddingHorizontal: 20,
+  },
+});

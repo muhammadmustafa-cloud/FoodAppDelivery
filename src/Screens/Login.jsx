@@ -14,10 +14,10 @@ const Login = ({ navigation }) => {
           <Image style={styles.logoImg} source={logo} />
         </View>
         <View style={styles.loginProcess}>
-          <TouchableOpacity onPress={()=> setLoggedIn(true)} style={styles.textContainer}>
-            <Text style={[styles.text, loggedIn && styles.activeText ]}>Login</Text>
+          <TouchableOpacity onPress={() => setLoggedIn(true)} style={styles.textContainer}>
+            <Text style={[styles.text, loggedIn && styles.activeText]}>Login</Text>
           </TouchableOpacity>
-          <TouchableOpacity onPress={()=> setLoggedIn(false)} style={styles.textContainer}>
+          <TouchableOpacity onPress={() => setLoggedIn(false)} style={styles.textContainer}>
             <Text style={[styles.text, !loggedIn && styles.activeText]}>Sign-up</Text>
           </TouchableOpacity>
         </View>
@@ -31,13 +31,13 @@ const Login = ({ navigation }) => {
                 <TextInput style={styles.textInputField} />
               </View>
               <View style={styles.inputFieldsContainer}>
-                <Text style={{ color: '#000', marginBottom: 10  }}>Password</Text>
+                <Text style={{ color: '#000', marginBottom: 10 }}>Password</Text>
                 <TextInput secureTextEntry={true} style={styles.textInputField} />
               </View>
               <Text style={styles.forgotPasscode}>Forgot passcode?</Text>
-              <TouchableOpacity onPress={() => navigation.navigate('Main')} style={styles.btnContainer} >
+              {/* <TouchableOpacity onPress={() => navigation.navigate('Main')} style={styles.btnContainer} >
                 <Text style={styles.btnText}>Login</Text>
-              </TouchableOpacity>
+              </TouchableOpacity> */}
             </>
           )
             :
@@ -52,13 +52,16 @@ const Login = ({ navigation }) => {
                   <TextInput secureTextEntry={true} style={styles.textInputField} />
                 </View>
                 <Text style={styles.forgotPasscode}>Forgot passcode?</Text>
-                <TouchableOpacity onPress={() => navigation.navigate('Main')} style={styles.btnContainer} >
+                {/* <TouchableOpacity onPress={() => navigation.navigate('Main')} style={styles.btnContainer} >
                   <Text style={styles.btnText}>Submit</Text>
-                </TouchableOpacity>
+                </TouchableOpacity> */}
               </>
             )
         }
       </View>
+      <TouchableOpacity onPress={() => navigation.navigate('Main')} style={styles.btnContainer} >
+        <Text style={styles.btnText}>{loggedIn ? "Login" : "Sign Up"}</Text>
+      </TouchableOpacity>
     </View>
   )
 }
@@ -101,7 +104,7 @@ const styles = StyleSheet.create({
   textContainer: {
     width: '25%',
   },
-  activeText:{
+  activeText: {
     paddingBottom: "10%",
     borderBottomColor: Color.btnColor,
     borderBottomWidth: 2,
@@ -135,21 +138,19 @@ const styles = StyleSheet.create({
   },
   btnContainer: {
     position: 'absolute',
-    left: '10%',
-    right: '10%',
     bottom: 20,
-    justifyContent: 'center',
+    left: "10%",
+    right: "10%",
+    marginHorizontal: 'auto',
     alignItems: 'center',
     paddingVertical: 20,
     backgroundColor: Color.orangeColor,
     borderRadius: 30,
- 
   },
-
   btnText: {
     fontFamily: 'SFProDisplay-Bold',
     fontSize: 18,
-    color: Color.white
-  }
+    color: Color.white,
+  },
 
 })

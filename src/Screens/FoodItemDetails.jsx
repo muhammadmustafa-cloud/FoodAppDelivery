@@ -2,27 +2,36 @@ import { Dimensions, StyleSheet, Text, TouchableOpacity, View } from 'react-nati
 import React from 'react';
 import FoodItemSlider from '../Components/FoodItemSLider';
 import Color from '../Constants/Color';
+import { useDispatch } from 'react-redux';
+import { addItemToCart } from '../redux/action/Action';
 
 
-const FoodItemDetails = ({route,navigation}) => {
-    const {item} = route.params
-
+const FoodItemDetails = ({ route, navigation }) => {
+    const { item } = route.params;
+    const dispatch = useDispatch();
+    const addItem = (item) => {
+        dispatch(addItemToCart(item))
+    }
+    const handleClick = () => {
+        addItem(item);
+        navigation.navigate('Cart');
+    }
     return (
         <View style={styles.container}>
             <View style={styles.sliderContainer}>
-                <FoodItemSlider images = {item.images}/>
+                <FoodItemSlider images={item.images} />
             </View>
             <View style={styles.detailsContainer}>
-                <Text style={styles.title}>Veggie tomato mix</Text>
-                <Text style={styles.price}>₦1,900</Text>
+                <Text style={styles.title}> {item.name} </Text>
+                <Text style={styles.price}> {item.price} </Text>
                 <Text style={styles.infoTitle}>Delivery info</Text>
                 <Text style={styles.infoText}>Delivered between Monday Aug and Thursday 20 from 8pm to 9:32 pm</Text>
                 <Text style={styles.infoTitle}>Return policy</Text>
                 <Text style={styles.infoText}>All our foods are double checked before leaving our stores so by any case you found a broken food please contact our hotline immediately.</Text>
             </View>
-                <TouchableOpacity onPress={() => navigation.navigate('Cart')} style={styles.btnContainer}>
-                    <Text style={styles.btnText}>Add to cart</Text>
-                </TouchableOpacity>
+            <TouchableOpacity onPress={handleClick} style={styles.btnContainer}>
+                <Text style={styles.btnText}>Add to cart</Text>
+            </TouchableOpacity>
         </View>
     );
 };
@@ -36,6 +45,7 @@ const styles = StyleSheet.create({
         paddingHorizontal: 20,
     },
     sliderContainer: {
+        marginTop: "20%",
         width: '100%',
         height: 280,
         borderWidth: 1,
@@ -70,19 +80,19 @@ const styles = StyleSheet.create({
         marginVertical: 5,
     },
     btnContainer: {
-      position: 'absolute',
-      left: '10%',
-      right: '10%',
-      bottom: 15,
-      justifyContent: 'center',
-      alignItems: 'center',
-      paddingVertical: 20,
-      backgroundColor: Color.orangeColor,
-      borderRadius: 30,
-  },
-  btnText: {
-      fontFamily: 'SFProDisplay-Bold',
-      fontSize: 18,
-      color: Color.white,
-  },
+        position: 'absolute',
+        left: '10%',
+        right: '10%',
+        bottom: 15,
+        justifyContent: 'center',
+        alignItems: 'center',
+        paddingVertical: 20,
+        backgroundColor: Color.orangeColor,
+        borderRadius: 30,
+    },
+    btnText: {
+        fontFamily: 'SFProDisplay-Bold',
+        fontSize: 18,
+        color: Color.white,
+    },
 });

@@ -7,14 +7,11 @@ import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import CartIcon from 'react-native-vector-icons/MaterialCommunityIcons';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import BottomTabNavigation from './BottomTabNavigation';
-import Profile from '../Screens/Profile';
 import Order from '../Screens/Order';
 import Offers from '../Screens/Offers';
 import PrivacyPolicy from '../Screens/PrivacyPolicy';
 import Security from '../Screens/Security';
-import Home from '../Screens/Home';
 import MainProfile from '../Screens/MainProfile';
-import Feather from 'react-native-vector-icons/Feather';
 
 const Drawer = createDrawerNavigator();
 
@@ -29,7 +26,7 @@ const BackButton = () => {
 
 const DrawerNavigation = () => {
   return (
-    <Drawer.Navigator
+    <Drawer.Navigator 
       screenOptions={{
         swipeEnabled: false,
         drawerActiveBackgroundColor: 'transparent',
@@ -48,7 +45,7 @@ const DrawerNavigation = () => {
           backgroundColor: Color.white,
         },
         headerTintColor: Color.black,
-        drawerLabelStyle: {
+        drawerLabelStyle: { 
           color: Color.white,
           fontSize: 16,
           fontFamily: "SFProDisplay-Medium",

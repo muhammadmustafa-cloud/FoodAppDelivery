@@ -29,7 +29,7 @@ const FoodItemSlider = ({ images }) => {
 
   const renderItem = ({ item }) => {
     return (
-      <View style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+      <View>
         <Image source={item} style={{ height: 200, width }} />
       </View>
     );
@@ -43,7 +43,8 @@ const FoodItemSlider = ({ images }) => {
         onScroll={handleScroll} 
         renderItem={renderItem} 
         horizontal={true} 
-        pagingEnabled={true} 
+        pagingEnabled={true}
+        
       />
       <View style={{ flexDirection: 'row', justifyContent: 'center', alignItems: 'center', marginTop: 20 }}>{renderDotIndicator()}</View>
     </View>

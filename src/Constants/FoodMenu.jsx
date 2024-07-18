@@ -32,7 +32,7 @@ const FoodMenu = [
 export const FoodCartItems = [
    {
       id: 1,
-      name: 'Veggie tomato mix',
+      name: 'Zinger Burger',
       price: 'N1,900',
       img: require('../../assets/images/bur1.png'),
       images: [require('../../assets/images/bur1.png'), require('../../assets/images/bur2.png')],
@@ -40,7 +40,7 @@ export const FoodCartItems = [
    },
    {
       id: 2,
-      name: 'Egg and cucumber...',
+      name: 'Snacks with Dip Sauce',
       price: 'N1,900',
       img: require('../../assets/images/potato.png'),
       images: [require('../../assets/images/potato.png'), require('../../assets/images/pizza.png')],
@@ -48,7 +48,7 @@ export const FoodCartItems = [
    },
    {
       id: 3,
-      name: 'Fried chicken m.',
+      name: 'Pizza',
       price: 'N2,100',
       img: require('../../assets/images/pizza.png'),
       images: [require('../../assets/images/potato.png'), require('../../assets/images/pizza.png')],
@@ -56,7 +56,7 @@ export const FoodCartItems = [
    },
    {
       id: 4,
-      name: 'Moi-moi and ekpa.',
+      name: 'French Fries',
       price: 'N1,200',
       img: require('../../assets/images/fries.png'),
       images: [require('../../assets/images/potato.png'), require('../../assets/images/pizza.png')],
@@ -91,9 +91,18 @@ export const FoodCartItems = [
       name: 'Sauce',
       price: 'N800',
       img: require('../../assets/images/sauce2.png'),
+      images: [require('../../assets/images/potato.png'), require('../../assets/images/pizza.png')],
       category: 'Sauce'
    },
-   // Add more items with appropriate categories
+   {
+      id: 9,
+      name: 'Ice Cream',
+      price: 'N800',
+      img: require('../../assets/images/icecream1.png'),
+      images: [require('../../assets/images/potato.png'), require('../../assets/images/pizza.png')],
+      category: 'Ice cream'
+   },
+   
 ]
 
 export default FoodMenu;

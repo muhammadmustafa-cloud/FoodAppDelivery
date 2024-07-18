@@ -23,7 +23,7 @@ const Header = ({ title, onPress }) => {
                     fontWeight: 'bold'
                 }}> {title} </Text>
             </View>
-            <TouchableOpacity style={styles.iconContainer} onPress={onPress}>
+            <TouchableOpacity style={styles.iconContainer} onPress={()=> navigation.navigate('Cart')}>
                     <Image
                         resizeMode='contain'
                         style={[styles.menu, {tintColor:Color.iconColor}]}

@@ -20,10 +20,10 @@ const WelcomePage = ({ navigation }) => {
           {/* <Image source={bgImg1} style={styles.bgImg1} />
         <Image source={bgImg2} style={styles.bgImg2} /> */}
         </View>
+      </View>
         <TouchableOpacity activeOpacity={1} onPress={()=> navigation.navigate("Login")} style={styles.btnContainer}>
           <Text style={styles.btnText}>Get Started</Text>
         </TouchableOpacity>
-      </View>
     </View>
   )
 }
@@ -87,7 +87,6 @@ const styles = StyleSheet.create({
     paddingVertical: 20,
     backgroundColor: Color.white,
     borderRadius: 30,
-    // width: "80%"
   },
   btnText: {
     fontFamily: 'SFProDisplay-Bold',
