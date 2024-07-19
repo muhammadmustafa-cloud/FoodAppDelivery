@@ -55,7 +55,14 @@ const AppNavigation = () => {
           headerShadowVisible: false,
         }}
           component={FoodItemDetails} />
-        <Stack.Screen name='Cart' options={{ headerShown: true }} component={Cart} />
+        <Stack.Screen name='Cart' options={{ 
+          headerShown: true,
+          headerLeft: () => <BackButton />,
+          headerTitleAlign: 'center',
+          headerStyle: {
+            backgroundColor: Color.grayColor,
+          },
+          }} component={Cart} />
         <Stack.Screen name='Checkout' options={{ headerShown: true }} component={Checkout} />
         <Stack.Screen name='SearchItems' options={{ 
           headerShown: true,
