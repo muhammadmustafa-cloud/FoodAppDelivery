@@ -81,7 +81,8 @@ const styles = StyleSheet.create({
     height: (Dimension.windowHeight) / 2.5,
     borderBottomLeftRadius: 30,
     borderBottomRightRadius: 30,
-    marginBottom: '8%'
+    marginBottom: '8%',
+    elevation:6
   },
   logoContainer: {
     display: 'flex',
@@ -146,6 +147,7 @@ const styles = StyleSheet.create({
     paddingVertical: 20,
     backgroundColor: Color.orangeColor,
     borderRadius: 30,
+    elevation:8
   },
   btnText: {
     fontFamily: 'SFProDisplay-Bold',

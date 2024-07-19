@@ -72,7 +72,7 @@ const DrawerNavigation = () => {
           headerLeft: () => <BackButton />,
           headerTitleAlign: 'center',
           headerStyle: {
-            backgroundColor: 'transparent',
+            backgroundColor: Color.grayColor,
             elevation: 0, // Remove shadow on Android
             shadowOpacity: 0, // Remove shadow on iOS
           },
@@ -87,7 +87,14 @@ const DrawerNavigation = () => {
       <Drawer.Screen name='Order' options={{
         drawerLabel: 'Order',
         title: 'Order',
-        headerShadowVisible: false,
+        headerLeft: () => <BackButton />,
+          headerTitleAlign: 'center',
+          headerStyle: {
+            backgroundColor: Color.grayColor,
+            elevation: 0, // Remove shadow on Android
+            shadowOpacity: 0, // Remove shadow on iOS
+          },
+          headerShadowVisible: false,
         drawerIcon: () => (
           <CartIcon name='cart-arrow-down' size={30} color={Color.white} />
         ),
@@ -106,7 +113,6 @@ const DrawerNavigation = () => {
           shadowOpacity: 0, // Remove shadow on iOS
         },
         headerTitle: '',
-        headerShadowVisible: false,
         drawerIcon: () => (
           <MaterialIcons name='local-offer' size={30} color={Color.white} />
         ),
@@ -116,17 +122,32 @@ const DrawerNavigation = () => {
       <Drawer.Screen name='PrivacyPolicy' options={{
         drawerLabel: 'PrivacyPolicy',
         title: 'PrivacyPolicy',
-        headerShadowVisible: false,
-        drawerIcon: () => (
-          <MaterialIcons name='sticky-note-2' size={30} color={Color.white} />
-        ),
+        headerLeft: () => <BackButton />,
+          headerTitleAlign: 'center',
+          headerStyle: {
+            backgroundColor: Color.grayColor,
+            elevation: 0, // Remove shadow on Android
+            shadowOpacity: 0, // Remove shadow on iOS
+          },
+          headerTitle: 'Privacy Policy',
+          headerShadowVisible: false,
+          drawerIcon: () => (
+            <MaterialIcons name='sticky-note-2' size={30} color={Color.white} />
+            // <FontAwesome name='user' size={30} color={Color.white} />
+          ),
       }}
         component={PrivacyPolicy}
       />
       <Drawer.Screen name='Security' options={{
         drawerLabel: 'Security',
         title: 'Security',
-        headerShadowVisible: false,
+        headerLeft: () => <BackButton/>,
+        headerTitleAlign: 'center',
+        headerStyle: {
+          backgroundColor: Color.grayColor,
+          elevation: 0,
+          shadowOpacity: 0,
+        },
         drawerIcon: () => (
           <MaterialIcons name='security' size={30} color={Color.white} />
         ),

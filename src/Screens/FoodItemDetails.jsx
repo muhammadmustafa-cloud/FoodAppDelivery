@@ -45,11 +45,12 @@ const styles = StyleSheet.create({
         paddingHorizontal: 20,
     },
     sliderContainer: {
-        marginTop: "20%",
+        // marginTop: "20%",
         width: '100%',
         height: 280,
         borderWidth: 1,
         borderColor: 'red'
+        
     },
     detailsContainer: {
         // marginTop: 20,
@@ -89,6 +90,7 @@ const styles = StyleSheet.create({
         paddingVertical: 20,
         backgroundColor: Color.orangeColor,
         borderRadius: 30,
+        elevation:8
     },
     btnText: {
         fontFamily: 'SFProDisplay-Bold',

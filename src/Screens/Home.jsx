@@ -24,7 +24,7 @@ const Home = ({ navigation }) => {
         <Header />
         <View style={{ marginTop: 5 }}>
           <Text style={styles.headerText}>Delicious {"\n"}food for you</Text>
-          <TouchableOpacity activeOpacity={0.9} onPress={() => navigation.navigate('SearchItems')}>
+          <TouchableOpacity activeOpacity={0.9} style={{elevation:8}} onPress={() => navigation.navigate('SearchItems')}>
             <Searchbar 
               placeholder='Search' 
               style={styles.searchbar} 

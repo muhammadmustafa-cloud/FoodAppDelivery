@@ -6,9 +6,9 @@ import tw from 'twrnc';
 const MenuItemCards = ({ item, index, navigation }) => {
 
   return (
-    <TouchableOpacity 
-      activeOpacity={0.8} 
-      style={{height: 300, display: 'flex', alignItems: 'center', justifyContent: 'center'}} 
+    <TouchableOpacity
+      activeOpacity={1} 
+      style={{height: 300, display: 'flex', alignItems: 'center', justifyContent: 'center',shadowColor: '#393939'}} 
       onPress={() => navigation.navigate('FoodItemDetails', { item })}
     >
       <View style={[tw`w-46 h-55 my-5 mr-6 p-3 py-5 rounded-3xl`, styles.parent]}>
@@ -32,10 +32,12 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     paddingTop: 50, // Adjust this value as needed to create space for the image
+    elevation:8
   },
   imageContainer: {
     transform: [{ translateX: -115 }], // Adjust this value to center the image horizontally
     paddingTop: "5%",
+    zIndex:1
 
   },
   shadow: {

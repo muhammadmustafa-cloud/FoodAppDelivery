@@ -56,10 +56,9 @@ const BottomTabNavigation = () => {
         component={Home} 
         options={{
           tabBarIcon: ({ focused }) => (
-            <FontAwesome name="home" color={focused ? Color.orangeColor : Color.iconColor} size={30} />
+            <FontAwesome name="home" color={focused ? Color.orangeColor : Color.iconColor} size={30} style={focused ? styles.iconShadow : null} />
           ),
           headerShown: false,
-          // headerLeft: () => <BackButton />
         }}
       />
       <Tab.Screen 
@@ -106,4 +105,8 @@ const BottomTabNavigation = () => {
 
 export default BottomTabNavigation
 
-const styles = StyleSheet.create({})
+const styles = StyleSheet.create({
+  iconShadow:{
+    elevation: 30
+  }
+})
