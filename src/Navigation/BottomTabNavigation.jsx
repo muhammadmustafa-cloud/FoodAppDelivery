@@ -32,7 +32,6 @@ const screenOptions = {
     shadowOpacity: 0, // Remove shadow on iOS
   },
   headerTitleStyle: {
-    // flex: 1,
     textAlign: 'center',
   },
   headerTitleAlign: 'center',
@@ -50,55 +49,58 @@ const BackButton = () => {
 const BottomTabNavigation = () => {
   return (
     <DrawerScreenWrapper>
-    <Tab.Navigator screenOptions={screenOptions}>
-      <Tab.Screen 
-        name='DrawerHome' 
-        component={Home} 
-        options={{
-          tabBarIcon: ({ focused }) => (
-            <FontAwesome name="home" color={focused ? Color.orangeColor : Color.iconColor} size={30} style={focused ? styles.iconShadow : null} />
-          ),
-          headerShown: false,
-        }}
-      />
-      <Tab.Screen 
-        name='LikeItems' 
-        component={LikedItems} 
-        options={{
-          tabBarIcon: ({ focused }) => (
-            <Feather name="heart" color={focused ? Color.orangeColor : Color.iconColor} size={28} />
-          ),
-          tabBarStyle: {display: 'none'}, 
-          headerShown: true,
-          headerLeft: () => <BackButton />
-        }}
-      />
-      <Tab.Screen 
-        name='MainProfile' 
-        component={MainProfile} 
-        options={{
-          tabBarIcon: ({ focused }) => (
-            <Feather name="user" color={focused ? Color.orangeColor : Color.iconColor} size={28} />
-          ),
-          tabBarStyle: {display: 'none'},
-          headerShown: true,
-          headerTitle: '',
-          headerLeft: () => <BackButton />
-        }}
-      />
-      <Tab.Screen 
-        name='Order' 
-        component={Order} 
-        options={{
-          tabBarIcon: ({ focused }) => (
-            <Entypo name="back-in-time" color={focused ? Color.orangeColor : Color.iconColor} size={28} />
-          ),
-          headerShown: true,
-          tabBarStyle: {display: 'none'},
-          headerLeft: () => <BackButton />
-        }}
-      />
-    </Tab.Navigator>
+      <Tab.Navigator screenOptions={screenOptions}>
+        <Tab.Screen
+          name='DrawerHome'
+          component={Home}
+          options={{
+            tabBarIcon: ({ focused }) => (
+              <View style={focused ? styles.iconWrapper : null}>
+                <FontAwesome name="home" color={focused ? Color.orangeColor : Color.iconColor} size={30} />
+              </View>
+            ),
+            headerShown: false,
+          }}
+        />
+        <Tab.Screen 
+          name='LikeItems' 
+          component={LikedItems} 
+          options={{
+            tabBarIcon: ({ focused }) => (
+              <Feather name="heart" color={focused ? Color.orangeColor : Color.iconColor} size={28} />
+            ),
+            tabBarStyle: {display: 'none'}, 
+            headerShown: true,
+            headerTitle: '',
+            headerLeft: () => <BackButton />
+          }}
+        />
+        <Tab.Screen 
+          name='MainProfile' 
+          component={MainProfile} 
+          options={{
+            tabBarIcon: ({ focused }) => (
+              <Feather name="user" color={focused ? Color.orangeColor : Color.iconColor} size={28} />
+            ),
+            tabBarStyle: {display: 'none'},
+            headerShown: true,
+            headerTitle: '',
+            headerLeft: () => <BackButton />
+          }}
+        />
+        <Tab.Screen 
+          name='Order' 
+          component={Order}
+          options={{
+            tabBarIcon: ({ focused }) => (
+              <Entypo name="back-in-time" color={focused ? Color.orangeColor : Color.iconColor} size={28} />
+            ),
+            headerShown: true,
+            tabBarStyle: {display: 'none'},
+            headerLeft: () => <BackButton />
+          }}
+        />
+      </Tab.Navigator>
     </DrawerScreenWrapper>
   )
 }
@@ -106,7 +108,11 @@ const BottomTabNavigation = () => {
 export default BottomTabNavigation
 
 const styles = StyleSheet.create({
-  iconShadow:{
-    elevation: 30
-  }
-})
+  iconWrapper: {
+    shadowColor: 'orange',
+    shadowOffset: { width: 0, height: 10 },
+    shadowOpacity: 0.8,
+    shadowRadius: 10,
+    elevation: 55, // Add elevation for Android
+  },
+});

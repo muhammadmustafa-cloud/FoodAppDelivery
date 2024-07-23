@@ -102,6 +102,31 @@ export const FoodCartItems = [
       images: [require('../../assets/images/potato.png'), require('../../assets/images/pizza.png')],
       category: 'Ice cream'
    },
+   {
+      id: 10,
+      name: 'Coke',
+      price: 'N100',
+      img: require('../../assets/images/coke.png'),
+      images: [require('../../assets/images/potato.png'), require('../../assets/images/pizza.png')],
+      category: 'Drinks'
+   },
+   {
+      id: 11,
+      name: 'Sushi',
+      price: 'N100',
+      img: require('../../assets/images/sushi.png'),
+      images: [require('../../assets/images/potato.png'), require('../../assets/images/pizza.png')],
+      category: 'Sushi'
+   },
+   {
+      id: 12,
+      name: 'Ukraine Soup',
+      price: 'N100',
+      img: require('../../assets/images/soup.png'),
+      images: [require('../../assets/images/potato.png'), require('../../assets/images/pizza.png')],
+      category: 'Soup'
+   },
+   
    
 ]
 

@@ -12,6 +12,7 @@ import Offers from '../Screens/Offers';
 import PrivacyPolicy from '../Screens/PrivacyPolicy';
 import Security from '../Screens/Security';
 import MainProfile from '../Screens/MainProfile';
+import Dimension from '../Constants/Dimension';
 
 const Drawer = createDrawerNavigator();
 
@@ -48,10 +49,11 @@ const DrawerNavigation = () => {
         drawerLabelStyle: { 
           color: Color.white,
           fontSize: 16,
-          fontFamily: "SFProDisplay-Medium",
+          fontFamily: "Poppins-Medium",
           marginLeft: -10,
+          // height: Dimension.windowHeight,
+          marginTop: Dimension.windowHeight/180
         },
-
       }}
     >
       <Drawer.Screen name='Home' options={{

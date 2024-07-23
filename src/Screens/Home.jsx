@@ -1,13 +1,19 @@
 import React, { useState } from 'react';
-import { FlatList, ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import { FlatList, Image, ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import { Searchbar } from 'react-native-paper';
 import Header from '../Components/Header';
 import DrawerScreenWrapper from '../Components/DrawerScreenWrapper';
 import FoodMenu, { FoodCartItems } from '../Constants/FoodMenu';
 import MenuItemCards from '../Components/MenuItemCards';
 import Color from '../Constants/Color';
+import Dimension from '../Constants/Dimension';
 
-const Home = ({ navigation }) => {
+import menu from '../../assets/images/menu.png'
+import cart from '../../assets/images/cart.png'
+import { useNavigation } from '@react-navigation/native';
+
+const Home = () => {
+  const navigation = useNavigation();
   const [activeMenu, setActiveMenu] = useState('Foods');
   const [searchQuery, setSearchQuery] = useState('');
   const [filteredItems, setFilteredItems] = useState(FoodCartItems.filter(item => item.category === activeMenu));
@@ -20,16 +26,19 @@ const Home = ({ navigation }) => {
 
   return (
     <DrawerScreenWrapper>
-      <View style={{ flex: 1, backgroundColor: Color.grayColor,  }}>
-        <Header />
-        <View style={{ marginTop: 5 }}>
+      <View style={{ flex: 1, backgroundColor: Color.grayColor }}>
+        <Header
+          leftIcon={{ component: <Image source={menu} style={styles.icon} />, onPress: () => navigation.toggleDrawer() }}
+          rightIcon={{ component: <Image source={cart} style={styles.icon} />, onPress: () => navigation.navigate('Cart') }}
+        />
+        <View>
           <Text style={styles.headerText}>Delicious {"\n"}food for you</Text>
-          <TouchableOpacity activeOpacity={0.9} style={{elevation:8}} onPress={() => navigation.navigate('SearchItems')}>
-            <Searchbar 
-              placeholder='Search' 
-              style={styles.searchbar} 
+          <TouchableOpacity activeOpacity={0.9} style={{ elevation: 8 }} onPress={() => navigation.navigate('SearchItems')}>
+            <Searchbar
+              placeholder='Search'
+              style={styles.searchbar}
               value={searchQuery}
-              editable={false} 
+              editable={false}
               pointerEvents="none"
             />
           </TouchableOpacity>
@@ -44,12 +53,12 @@ const Home = ({ navigation }) => {
             renderItem={({ item }) => {
               let isActive = item.name === activeMenu;
               return (
-                <TouchableOpacity 
-                  onPress={() => filterByCategory(item.name)} 
+                <TouchableOpacity
+                  onPress={() => filterByCategory(item.name)}
                   style={[styles.menuItem, { backgroundColor: isActive ? Color.orangeColor : Color.white }]}
                 >
-                  <Text style={{ color: isActive ? Color.white : Color.orangeColor, fontFamily: 'SFProDisplay-Medium' }}> 
-                    {item.name} 
+                  <Text style={{ color: isActive ? Color.white : Color.orangeColor, fontFamily: 'SFProDisplay-Medium' }}>
+                    {item.name}
                   </Text>
                 </TouchableOpacity>
               );
@@ -82,7 +91,7 @@ const styles = StyleSheet.create({
     marginBottom: '10%',
   },
   menuContainer: {
-    marginHorizontal: 9,
+    marginHorizontal: Dimension.windowWidth / 16,
     marginTop: '1%',
     marginBottom: '7%',
   },
@@ -93,6 +102,12 @@ const styles = StyleSheet.create({
     marginRight: 18,
   },
   scrollViewContent: {
-    paddingHorizontal: 20,
+    paddingHorizontal: Dimension.windowWidth / 16,
+  },
+  icon: {
+    width: 30,
+    height: 30,
+    resizeMode: 'contain',
   },
 });
+

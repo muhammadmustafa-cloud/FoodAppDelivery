@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import {Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import Color from '../Constants/Color';
 import Dimension from '../Constants/Dimension';
 
@@ -37,7 +37,6 @@ const styles = StyleSheet.create({
     width: Dimension.windowWidth,
     height: Dimension.windowHeight,
     paddingTop: '10%',
-    // position: 'relative',
   },
   mainContainer: {
     paddingHorizontal: '10%',
@@ -72,14 +71,11 @@ const styles = StyleSheet.create({
     position: 'absolute',
     width: '70%', 
     height: '60%', 
-    // bottom: 0,
-    // left: '10%', 
     zIndex: 1,
   },
   bgImg2: {
     position: 'absolute',
     width: '55%',
-    // height: '50%', 
     right: 0 , 
     top: '10%', 
     zIndex: 0,
@@ -94,7 +90,6 @@ const styles = StyleSheet.create({
     paddingVertical: 20,
     backgroundColor: Color.white,
     borderRadius: 30,
-    // elevation:8
   },
   btnText: {
     fontFamily: 'SFProDisplay-Bold',

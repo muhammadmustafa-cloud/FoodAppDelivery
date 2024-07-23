@@ -1,48 +1,40 @@
-import { StyleSheet, Text, TouchableOpacity, View, Image } from 'react-native'
-import React from 'react'
-import { useNavigation } from '@react-navigation/native'
-import menu from '../../assets/images/menu.png'
-import cart from '../../assets/images/cart.png'
-import Color from '../Constants/Color'
+import { Dimensions, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import React from 'react';
+import { useNavigation } from '@react-navigation/native';
+import Color from '../Constants/Color';
+import Dimension from '../Constants/Dimension';
 
-const Header = ({ title, onPress }) => {
+const Header = ({ title, leftIcon, rightIcon }) => {
     const navigation = useNavigation();
     return (
         <View style={styles.container}>
             <View style={{ flexDirection: 'row', alignItems: 'center' }}>
-                <TouchableOpacity style={styles.iconContainer} onPress={()=> navigation.toggleDrawer()}>
-                    <Image
-                        resizeMode='contain'
-                        style={styles.menu}
-                        source={menu}
-                    />
-                </TouchableOpacity>
-                <Text style={{
-                    marginLeft: 12,
-                    fontSize: 17,
-                    fontWeight: 'bold'
-                }}> {title} </Text>
+                {leftIcon && (
+                    <TouchableOpacity style={styles.iconContainer} onPress={leftIcon.onPress}>
+                        {leftIcon.component}
+                    </TouchableOpacity>
+                )}
+                <Text style={styles.title}> {title} </Text>
             </View>
-            <TouchableOpacity style={styles.iconContainer} onPress={()=> navigation.navigate('Cart')}>
-                    <Image
-                        resizeMode='contain'
-                        style={[styles.menu, {tintColor:Color.iconColor}]}
-                        source={cart}
-                    />
+            {rightIcon && (
+                <TouchableOpacity style={styles.iconContainer} onPress={rightIcon.onPress}>
+                    {rightIcon.component}
                 </TouchableOpacity>
+            )}
         </View>
-    )
+    );
 }
 
-export default Header
+export default Header;
 
 const styles = StyleSheet.create({
     container: {
         flexDirection: 'row',
         alignItems: 'center',
         justifyContent: 'space-between',
-        marginTop: 20,
-        marginHorizontal: 16
+        marginTop: Dimension.windowHeight / 21,
+        marginHorizontal: Dimension.windowWidth / 13,
+        marginBottom: Dimension.windowHeight / 60,
     },
     iconContainer: {
         height: 45,
@@ -50,11 +42,15 @@ const styles = StyleSheet.create({
         borderRadius: 999,
         alignItems: 'center',
         justifyContent: 'center',
-        backgroundColor: Color.grayColor
+        // backgroundColor: Color.grayColor,
     },
-    menu: {
-        height: 35,
-        width: 35,
-        tintColor: Color.black
-    }
-})
+    title: {
+        marginLeft: 12,
+        fontSize: 22,
+        fontFamily: 'SFProDisplay-Medium ',
+        // fontWeight: 'bold',
+        textAlign: 'center',
+        marginHorizontal: 'auto',
+        color: Color.black
+    },
+});

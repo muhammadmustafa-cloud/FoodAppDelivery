@@ -3,7 +3,9 @@ import React, { useState } from 'react'
 import Color from '../Constants/Color'
 import DeliveryMethod from '../Components/DeliveryMethod'
 import RadioBtn from '../Components/RadioBtn'
-
+import Header from '../Components/Header'
+import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
+import Dimension from '../Constants/Dimension'
 const Checkout = ({ navigation }) => {
     const [btnClicked, setBtnClicked] = useState(false);
     const [modalVisible, setModalVisible] = useState(false);
@@ -53,9 +55,16 @@ const Checkout = ({ navigation }) => {
 
     return (
         <View style={{ flex: 1 }}>
+            <Header 
+            leftIcon={{
+                component: <MaterialIcons name="keyboard-arrow-left" size={33} color={Color.black} />,
+                onPress: () => navigation.goBack()
+            }}
+            title={"Checkout"}
+            />
             {modalBox()}
-            <View style={{ marginHorizontal: 'auto', width: "80%", marginTop: "3%", display: 'flex', justifyContent: 'center', marginVertical: '10%' }}>
-                <Text style={{ fontFamily: 'SFProDisplay-Medium', fontSize: 28, color: Color.black, marginBottom: "3%" }}>{!btnClicked ? 'Delivery' : 'Payment'}</Text>
+            <View style={{ marginHorizontal: 'auto', width: Dimension.windowWidth*0.8, marginTop: Dimension.windowHeight*0.001, display: 'flex', justifyContent: 'center', }}>
+                <Text style={{ fontFamily: 'SFProDisplay-Medium', fontSize: 28, color: Color.black, marginBottom: Dimension.windowHeight/650 }}>{!btnClicked ? 'Delivery' : 'Payment'}</Text>
                 <View>
                     <View style={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-between', marginHorizontal: 5, marginTop: "5%", marginBottom: '4%' }}>
                         <Text style={{ color: Color.black, fontFamily: 'SFProDisplay-Medium' }}>{!btnClicked ? 'Address Details' : 'Payment method'}</Text>
@@ -63,7 +72,7 @@ const Checkout = ({ navigation }) => {
                     </View>
                     {
                         !btnClicked ?
-                            <View style={{ backgroundColor: Color.white, display: 'flex', flexDirection: 'column', gap: 10, paddingVertical: 20, paddingHorizontal: 20, borderRadius: 15, marginBottom: "8%" }}>
+                            <View style={{ backgroundColor: Color.white, display: 'flex', flexDirection: 'column', gap: 10, paddingVertical: 20, paddingHorizontal: 20, borderRadius: 15, marginBottom: "8%", elevation:2 }}>
                                 <Text style={{ color: Color.black, fontFamily: 'SFProDisplay-Medium', fontSize: 18, borderBottomWidth: 1, paddingBottom: "3%", borderColor: Color.grayColor }}>Marvis Ighedosa</Text>
                                 <Text style={{ color: Color.black, width: "85%", letterSpacing: 0.3, borderBottomWidth: 1, paddingBottom: "3%", borderColor: Color.grayColor, }}>Km 5 refinery road oppsite re
                                     public road, effurun, delta state</Text>

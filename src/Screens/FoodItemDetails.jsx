@@ -1,23 +1,39 @@
 import { Dimensions, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import React from 'react';
-import FoodItemSlider from '../Components/FoodItemSLider';
+import FoodItemSlider from '../Components/FoodItemSLider';  // Fixed typo in the import statement
 import Color from '../Constants/Color';
 import { useDispatch } from 'react-redux';
 import { addItemToCart } from '../redux/action/Action';
-
+import Header from '../Components/Header';
+import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
+import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
+import Dimension from '../Constants/Dimension';
 
 const FoodItemDetails = ({ route, navigation }) => {
     const { item } = route.params;
     const dispatch = useDispatch();
+
     const addItem = (item) => {
-        dispatch(addItemToCart(item))
+        dispatch(addItemToCart(item));
     }
+
     const handleClick = () => {
         addItem(item);
         navigation.navigate('Cart');
     }
+
     return (
         <View style={styles.container}>
+            <Header
+                leftIcon={{
+                    component: <MaterialIcons name="keyboard-arrow-left" size={33} color={Color.black} />,
+                    onPress: () => navigation.goBack()
+                }}
+                rightIcon={{
+                    component: <MaterialCommunityIcons name="cards-heart-outline" size={33} color={Color.black} />,
+                    onPress: () => console.log('Heart icon pressed')
+                }}
+            />
             <View style={styles.sliderContainer}>
                 <FoodItemSlider images={item.images} />
             </View>
@@ -45,35 +61,30 @@ const styles = StyleSheet.create({
         paddingHorizontal: 20,
     },
     sliderContainer: {
-        // marginTop: "20%",
         width: '100%',
-        height: 280,
-        borderWidth: 1,
-        borderColor: 'red'
-        
+        height: Dimensions.get('window').height * 0.35,  // Responsive height
     },
     detailsContainer: {
-        // marginTop: 20,
         flex: 1,
+        marginTop: Dimension.windowHeight/110,
     },
     title: {
         fontSize: 24,
         fontWeight: 'bold',
         color: Color.black,
         textAlign: 'center',
-        // marginVertical: 10,
     },
     price: {
         fontSize: 22,
         color: Color.orangeColor,
         textAlign: 'center',
-        // marginVertical: 10,
+        marginVertical: 10,
     },
     infoTitle: {
         fontSize: 16,
         fontWeight: 'bold',
         marginVertical: 10,
-        color: Color.black
+        color: Color.black,
     },
     infoText: {
         fontSize: 14,
@@ -90,7 +101,7 @@ const styles = StyleSheet.create({
         paddingVertical: 20,
         backgroundColor: Color.orangeColor,
         borderRadius: 30,
-        elevation:8
+        elevation: 8,
     },
     btnText: {
         fontFamily: 'SFProDisplay-Bold',

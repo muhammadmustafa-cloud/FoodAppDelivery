@@ -1,24 +1,28 @@
-import { Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
+import { Dimensions, Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
 import React from 'react'
 import Color from '../Constants/Color'
-import tw from 'twrnc';
 
-const MenuItemCards = ({ item, index, navigation }) => {
+const { width, height } = Dimensions.get('window');
 
+const MenuItemCards = ({ item, navigation, parentHeight = height * 0.3, parentWidth = width * 0.45, imageHeight = height * 0.2, imageWidth = width * 0.5 }) => {
   return (
     <TouchableOpacity
-      activeOpacity={1} 
-      style={{height: 300, display: 'flex', alignItems: 'center', justifyContent: 'center',shadowColor: '#393939'}} 
+      activeOpacity={1}
+      style={styles.touchable}
       onPress={() => navigation.navigate('FoodItemDetails', { item })}
     >
-      <View style={[tw`w-46 h-55 my-5 mr-6 p-3 py-5 rounded-3xl`, styles.parent]}>
-        <View style={tw`flex px-3 py-2 justify-center items-center`}>
-          <Text style={[tw`text-black text-xl text-center`, styles.itemName]}>{item.name}</Text>
-          <Text style={[tw`text-black`, styles.price]}>{item.price}</Text>
+      <View style={[styles.parent, { height: parentHeight, width: parentWidth }]}>
+        <View style={styles.textContainer}>
+          <Text style={styles.itemName}>{item.name}</Text>
+          <Text style={styles.price}>{item.price}</Text>
         </View>
       </View>
-      <View style={[tw`absolute -top-8 left-1/2`, styles.imageContainer]}>
-        <Image resizeMode='contain' source={item.img} style={[ styles.imageShadow]} />
+      <View style={styles.absoluteImage}>
+        <Image
+          resizeMode='contain'
+          source={item.img}
+          style={[styles.imageShadow, { height: imageHeight, width: imageWidth }]}
+        />
       </View>
     </TouchableOpacity>
   )
@@ -27,36 +31,55 @@ const MenuItemCards = ({ item, index, navigation }) => {
 export default MenuItemCards
 
 const styles = StyleSheet.create({
+  touchable: {
+    height: height * 0.4,
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    shadowColor: '#393939'
+  },
   parent: {
+    marginVertical: height * 0.02,
+    marginRight: width * 0.06,
+    padding: height * 0.015,
+    paddingVertical: height * 0.025,
+    borderRadius: 24,
     backgroundColor: Color.white,
     justifyContent: 'center',
     alignItems: 'center',
-    paddingTop: 50, // Adjust this value as needed to create space for the image
-    elevation:8
+    paddingTop: height * 0.06,
+    elevation: 8,
   },
-  imageContainer: {
-    transform: [{ translateX: -115 }], // Adjust this value to center the image horizontally
-    paddingTop: "5%",
-    zIndex:1
-
+  textContainer: {
+    flex: 1,
+    paddingHorizontal: width * 0.03,
+    paddingVertical: height * 0.01,
+    justifyContent: 'center',
+    alignItems: 'center'
   },
-  shadow: {
-    // elevation: 10, // For Android
-  },
-  imageShadow: {
-    elevation: 10,
-    width: 200,
-    height: 150,
-    borderRadius: 100, // Makes the image circular
+  itemName: {
+    fontFamily: 'SFProDisplay-Medium',
+    fontSize: width * 0.05,
+    marginTop: height * 0.02,
+    color: 'black',
+    textAlign: 'center',
   },
   price: {
     color: Color.orangeColor,
     fontFamily: 'SFProDisplay-Bold',
-    marginTop: '7%'
+    marginTop: height * 0.01,
+    textAlign: 'center',
   },
-  itemName:{
-    fontFamily: 'SFProDisplay-Medium',
-    fontSize: 24,
-    marginTop: '7%'
-  }
+  absoluteImage: {
+    position: 'absolute',
+    top: -height * 0.04,
+    left: '45%',
+    zIndex: 1,
+    transform: [{ translateX: -width * 0.25 }],
+    paddingTop: '5%',
+  },
+  imageShadow: {
+    elevation: 10,
+    borderRadius: 100,
+  },
 })
