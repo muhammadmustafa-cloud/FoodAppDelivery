@@ -1,11 +1,12 @@
 import React from 'react';
-import {Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import { Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import Color from '../Constants/Color';
 import Dimension from '../Constants/Dimension';
 
 import logo from '../../assets/images/logo.png';
 import bgImg1 from '../../assets/images/toyface1.png';
 import bgImg2 from '../../assets/images/toyface2.png';
+import LinearGradient from 'react-native-linear-gradient';
 
 const WelcomePage = ({ navigation }) => {
   return (
@@ -20,6 +21,12 @@ const WelcomePage = ({ navigation }) => {
         <View style={styles.bgImgContainer}>
           <Image source={bgImg1} style={styles.bgImg1} />
           <Image source={bgImg2} style={styles.bgImg2} />
+          <LinearGradient
+            colors={['rgba(255, 71, 11, 0.1)', '#FF470B']}
+            start={{ x: 0.5, y: -0.4006 }}
+            end={{ x: 0.4, y: 0.7585 }}
+            style={styles.gradient1}
+          />
         </View>
       </View>
       <TouchableOpacity activeOpacity={1} onPress={() => navigation.navigate("Login")} style={styles.btnContainer}>
@@ -65,19 +72,29 @@ const styles = StyleSheet.create({
   bgImgContainer: {
     position: 'relative',
     width: '100%',
-    height: '100%', 
+    height: '100%',
   },
   bgImg1: {
     position: 'absolute',
-    width: '70%', 
-    height: '60%', 
+    width: '70%',
+    height: '60%',
     zIndex: 1,
+  },
+  gradient1: {
+    position: 'absolute',
+    width: '100%',
+    height: '20%',
+    zIndex: 1,
+    top: Dimension.windowHeight * 0.38,
+    // opacity: 0.6
   },
   bgImg2: {
     position: 'absolute',
-    width: '55%',
-    right: 0 , 
-    top: '10%', 
+    // width: '55%',
+    width: Dimension.windowWidth * 0.55,
+    height: Dimension.windowHeight * 0.45,
+    right: 0,
+    top: '10%',
     zIndex: 0,
   },
   btnContainer: {

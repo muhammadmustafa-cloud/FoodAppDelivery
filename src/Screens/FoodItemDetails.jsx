@@ -58,7 +58,6 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         backgroundColor: '#fff',
-        paddingHorizontal: 20,
     },
     sliderContainer: {
         width: '100%',
@@ -66,6 +65,7 @@ const styles = StyleSheet.create({
     },
     detailsContainer: {
         flex: 1,
+        paddingHorizontal: Dimension.windowWidth*0.08,
         marginTop: Dimension.windowHeight/110,
     },
     title: {

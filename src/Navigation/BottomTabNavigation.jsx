@@ -95,7 +95,7 @@ const BottomTabNavigation = () => {
             tabBarIcon: ({ focused }) => (
               <Entypo name="back-in-time" color={focused ? Color.orangeColor : Color.iconColor} size={28} />
             ),
-            headerShown: true,
+            headerShown: false,
             tabBarStyle: {display: 'none'},
             headerLeft: () => <BackButton />
           }}

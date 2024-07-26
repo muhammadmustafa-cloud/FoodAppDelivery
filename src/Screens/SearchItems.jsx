@@ -124,6 +124,6 @@ const styles = StyleSheet.create({
     paddingHorizontal: Dimension.windowWidth*0.05,
   },
   secondColumn: {
-    // marginTop: 5, // Adjust this value as needed
+    top: Dimension.windowHeight*0.05, // Adjust this value as needed
   },
 });

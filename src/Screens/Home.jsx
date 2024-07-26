@@ -7,8 +7,9 @@ import FoodMenu, { FoodCartItems } from '../Constants/FoodMenu';
 import MenuItemCards from '../Components/MenuItemCards';
 import Color from '../Constants/Color';
 import Dimension from '../Constants/Dimension';
-
-import menu from '../../assets/images/menu.png'
+import Ionicons from 'react-native-vector-icons/Ionicons'
+import AntDesign from 'react-native-vector-icons/AntDesign'
+// import menu from '../../assets/images/menu.png'
 import cart from '../../assets/images/cart.png'
 import { useNavigation } from '@react-navigation/native';
 
@@ -26,10 +27,10 @@ const Home = () => {
 
   return (
     <DrawerScreenWrapper>
-      <View style={{ flex: 1, backgroundColor: Color.grayColor }}>
+      <View style={{ flex: 1, backgroundColor: Color.grayColor, }}>
         <Header
-          leftIcon={{ component: <Image source={menu} style={styles.icon} />, onPress: () => navigation.toggleDrawer() }}
-          rightIcon={{ component: <Image source={cart} style={styles.icon} />, onPress: () => navigation.navigate('Cart') }}
+          leftIcon={{ component: <Ionicons name='menu' size={32} style={styles.icon} />, onPress: () => navigation.toggleDrawer() }}
+          rightIcon={{ component: <AntDesign name='shoppingcart' size={32} style={styles.icon} />, onPress: () => navigation.navigate('Cart') }}
         />
         <View>
           <Text style={styles.headerText}>Delicious {"\n"}food for you</Text>
@@ -105,8 +106,9 @@ const styles = StyleSheet.create({
     paddingHorizontal: Dimension.windowWidth / 16,
   },
   icon: {
-    width: 30,
-    height: 30,
+    color: Color.black,
+    // width: 30,
+    // height: 30,
     resizeMode: 'contain',
   },
 });

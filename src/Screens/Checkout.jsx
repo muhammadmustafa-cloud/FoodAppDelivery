@@ -6,6 +6,8 @@ import RadioBtn from '../Components/RadioBtn'
 import Header from '../Components/Header'
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import Dimension from '../Constants/Dimension'
+import { Divider } from 'react-native-paper'
+
 const Checkout = ({ navigation }) => {
     const [btnClicked, setBtnClicked] = useState(false);
     const [modalVisible, setModalVisible] = useState(false);
@@ -27,25 +29,25 @@ const Checkout = ({ navigation }) => {
             >
                 <View style={styles.modalOverlay}>
                     <View style={styles.modalContent}>
-                        <View style={{ backgroundColor: "#EDEDED", paddingVertical: "5%", paddingHorizontal: '8%', borderTopLeftRadius: 20, borderTopRightRadius: 20  }}>
-                            <Text style={{ color: Color.black,  }}>Please note</Text>
+                        <View style={styles.modalHeader}>
+                            <Text style={styles.modalTitle}>Please note</Text>
                         </View>
-                        <View style={{paddingHorizontal: "8%", marginVertical: '5%', borderColor: Color.iconColor}}>
-                            <Text style={{ color: Color.iconColor, textTransform: 'uppercase' }}>Delivery to Mainland</Text>
-                            <Text style={{ color: Color.black }}> N1000 - N2000</Text>
+                        <View style={styles.modalBody}>
+                            <Text style={styles.modalSubtitle}>Delivery to Mainland</Text>
+                            <Text style={styles.modalText}>N1000 - N2000</Text>
                         </View>
-                        <View style={{height: 0.5, backgroundColor: 'black', marginHorizontal: '8%', marginBottom: '5%' }}/>
-                        <View style={{paddingHorizontal: "8%", marginBottom: '5%'}}>
-                            <Text style={{ color: Color.iconColor, textTransform: 'uppercase' }}>Delivery to island</Text>
-                            <Text style={{ color: Color.black }}> N2000 - N3000</Text>
+                        <Divider style={{width: '80%', marginHorizontal: 'auto', marginVertical: '2%'}}/>
+                        <View style={styles.modalBody}>
+                            <Text style={styles.modalSubtitle}>Delivery to Island</Text>
+                            <Text style={styles.modalText}>N2000 - N3000</Text>
                         </View>
-                        <View style={{display: 'flex', flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center' ,paddingHorizontal: "8%", marginBottom: '4%'}}>
-                        <TouchableOpacity onPress={setModalVisible}>
-                            <Text style={{color:Color.iconColor, color: 'rgba(0,0,0,1)'}}>Cancel</Text>
-                        </TouchableOpacity>
-                        <TouchableOpacity >
-                            <Text style={{color:Color.iconColor, backgroundColor: Color.orangeColor, color: Color.white, paddingHorizontal: '7%', paddingVertical: "3%", borderRadius: 50}}>Proceed</Text>
-                        </TouchableOpacity>
+                        <View style={styles.modalFooter}>
+                            <TouchableOpacity onPress={() => setModalVisible(false)}>
+                                <Text style={styles.cancelText}>Cancel</Text>
+                            </TouchableOpacity>
+                            <TouchableOpacity>
+                                <Text style={styles.proceedText}>Proceed</Text>
+                            </TouchableOpacity>
                         </View>
                     </View>
                 </View>
@@ -63,32 +65,31 @@ const Checkout = ({ navigation }) => {
             title={"Checkout"}
             />
             {modalBox()}
-            <View style={{ marginHorizontal: 'auto', width: Dimension.windowWidth*0.8, marginTop: Dimension.windowHeight*0.001, display: 'flex', justifyContent: 'center', }}>
-                <Text style={{ fontFamily: 'SFProDisplay-Medium', fontSize: 28, color: Color.black, marginBottom: Dimension.windowHeight/650 }}>{!btnClicked ? 'Delivery' : 'Payment'}</Text>
+            <View style={styles.container}>
+                <Text style={styles.pageTitle}>{!btnClicked ? 'Delivery' : 'Payment'}</Text>
                 <View>
-                    <View style={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-between', marginHorizontal: 5, marginTop: "5%", marginBottom: '4%' }}>
-                        <Text style={{ color: Color.black, fontFamily: 'SFProDisplay-Medium' }}>{!btnClicked ? 'Address Details' : 'Payment method'}</Text>
-                        <Text style={{ color: Color.orangeColor, fontFamily: 'SFProDisplay-Medium' }}>{!btnClicked ? 'change' : ''}</Text>
+                    <View style={styles.sectionHeader}>
+                        <Text style={styles.sectionTitle}>{!btnClicked ? 'Address Details' : 'Payment method'}</Text>
+                        <Text style={styles.changeText}>{!btnClicked ? 'change' : ''}</Text>
                     </View>
                     {
                         !btnClicked ?
-                            <View style={{ backgroundColor: Color.white, display: 'flex', flexDirection: 'column', gap: 10, paddingVertical: 20, paddingHorizontal: 20, borderRadius: 15, marginBottom: "8%", elevation:2 }}>
-                                <Text style={{ color: Color.black, fontFamily: 'SFProDisplay-Medium', fontSize: 18, borderBottomWidth: 1, paddingBottom: "3%", borderColor: Color.grayColor }}>Marvis Ighedosa</Text>
-                                <Text style={{ color: Color.black, width: "85%", letterSpacing: 0.3, borderBottomWidth: 1, paddingBottom: "3%", borderColor: Color.grayColor, }}>Km 5 refinery road oppsite re
-                                    public road, effurun, delta state</Text>
-                                <Text style={{ color: Color.black, letterSpacing: 0.5, width: "50%", }}>+234 9011039271</Text>
+                            <View style={styles.addressDetails}>
+                                <Text style={styles.addressText}>Marvis Ighedosa</Text>
+                                <Text style={styles.addressDescription}>Km 5 refinery road opposite republic road, Effurun, Delta state</Text>
+                                <Text style={styles.phoneNumber}>+234 9011039271</Text>
                             </View>
                             :
                             <RadioBtn />
                     }
                 </View>
-                <View style={{}}>
-                    <Text style={{ color: Color.black, fontFamily: 'SFProDisplay-Medium', paddingBottom: 15, marginTop: !btnClicked ? '' : '4%' }}>Delivery method.</Text>
+                <View>
+                    <Text style={styles.deliveryMethodTitle}>Delivery method.</Text>
                     <DeliveryMethod />
                 </View>
-                <View style={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', marginTop: !btnClicked ? '20%' : '5%' }}>
-                    <Text style={{ color: Color.black, fontFamily: 'SFProDisplay-Regular', fontSize: 17 }}>Total</Text>
-                    <Text style={{ color: Color.black, fontFamily: 'SFProDisplay-Bold', fontSize: 20 }}>23,000</Text>
+                <View style={styles.totalContainer}>
+                    <Text style={styles.totalText}>Total</Text>
+                    <Text style={styles.totalAmount}>23,000</Text>
                 </View>
             </View>
             <TouchableOpacity activeOpacity={0.8} onPress={processBtn} style={styles.btnContainer}>
@@ -124,19 +125,130 @@ const styles = StyleSheet.create({
         backgroundColor: 'rgba(0, 0, 0, 0.5)',
     },
     modalContent: {
-        // width: 200,
-        // height: 200,
+        width: '70%',
+        height: '35%',
         backgroundColor: Color.white,
-        // justifyContent: 'center',
-        // alignItems: 'center',
         borderRadius: 20,
-        // paddingHorizontal: 10
+        overflow: 'hidden',
     },
-    modalCloseBtn: {
-        marginTop: 20,
-        paddingHorizontal: 10,
-        paddingVertical: 5,
-        backgroundColor: Color.black,
-        borderRadius: 5,
+    modalHeader: {
+        backgroundColor: "#EDEDED",
+        paddingVertical: '5%',
+        paddingHorizontal: '12%',
+    },
+    modalTitle: {
+        color: Color.black,
+    },
+    modalBody: {
+        paddingHorizontal: '12%',
+        marginVertical: '5%',
+        borderColor: Color.iconColor,
+    },
+    modalSubtitle: {
+        color: Color.iconColor,
+        textTransform: 'uppercase',
+    },
+    modalText: {
+        color: Color.black,
+    },
+
+    modalFooter: {
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        alignItems: 'center',
+        paddingHorizontal: '12%',
+        marginTop: '5%'
+        // marginBottom: '8%',
+    },
+    cancelText: {
+        color: 'rgba(0,0,0,1)',
+    },
+    proceedText: {
+        backgroundColor: Color.orangeColor,
+        color: Color.white,
+        paddingHorizontal: '9%',
+        paddingVertical: '6%',
+        borderRadius: 50,
+        
+    },
+    container: {
+        marginHorizontal: 'auto',
+        width: Dimension.windowWidth * 0.8,
+        marginTop: Dimension.windowHeight * 0.001,
+        justifyContent: 'center',
+    },
+    pageTitle: {
+        fontFamily: 'SFProDisplay-Medium',
+        fontSize: 28,
+        color: Color.black,
+        marginBottom: Dimension.windowHeight / 650,
+    },
+    sectionHeader: {
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        marginHorizontal: 5,
+        marginTop: '5%',
+        marginBottom: '4%',
+    },
+    sectionTitle: {
+        color: Color.black,
+        fontFamily: 'SFProDisplay-Medium',
+    },
+    changeText: {
+        color: Color.orangeColor,
+        fontFamily: 'SFProDisplay-Medium',
+    },
+    addressDetails: {
+        backgroundColor: Color.white,
+        flexDirection: 'column',
+        gap: 10,
+        paddingVertical: 20,
+        paddingHorizontal: 20,
+        borderRadius: 15,
+        marginBottom: '8%',
+        elevation: 2,
+    },
+    addressText: {
+        color: Color.black,
+        fontFamily: 'SFProDisplay-Medium',
+        fontSize: 18,
+        borderBottomWidth: 1,
+        paddingBottom: '3%',
+        borderColor: Color.grayColor,
+    },
+    addressDescription: {
+        color: Color.black,
+        width: '85%',
+        letterSpacing: 0.3,
+        borderBottomWidth: 1,
+        paddingBottom: '3%',
+        borderColor: Color.grayColor,
+    },
+    phoneNumber: {
+        color: Color.black,
+        letterSpacing: 0.5,
+        width: '50%',
+    },
+    deliveryMethodTitle: {
+        color: Color.black,
+        fontFamily: 'SFProDisplay-Medium',
+        paddingBottom: 15,
+        marginTop: '4%',
+    },
+    totalContainer: {
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        alignItems: 'center',
+        marginTop: '5%',
+    },
+    totalText: {
+        color: Color.black,
+        fontFamily: 'SFProDisplay-Regular',
+        fontSize: 17,
+    },
+    totalAmount: {
+        color: Color.black,
+        fontFamily: 'SFProDisplay-Bold',
+        fontSize: 20,
     },
 });

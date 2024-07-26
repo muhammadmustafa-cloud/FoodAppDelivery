@@ -72,7 +72,7 @@ const styles = StyleSheet.create({
   },
   absoluteImage: {
     position: 'absolute',
-    top: -height * 0.04,
+    top: -height * 0.03,
     left: '45%',
     zIndex: 1,
     transform: [{ translateX: -width * 0.25 }],

@@ -8,13 +8,16 @@ const Header = ({ title, leftIcon, rightIcon }) => {
     const navigation = useNavigation();
     return (
         <View style={styles.container}>
-            <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+            <View style={{ flexDirection: 'row', alignItems: 'center', }}>
                 {leftIcon && (
                     <TouchableOpacity style={styles.iconContainer} onPress={leftIcon.onPress}>
                         {leftIcon.component}
                     </TouchableOpacity>
                 )}
-                <Text style={styles.title}> {title} </Text>
+                <View>
+                    <Text style={styles.title}> {title} </Text>
+
+                </View>
             </View>
             {rightIcon && (
                 <TouchableOpacity style={styles.iconContainer} onPress={rightIcon.onPress}>
@@ -33,7 +36,7 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'space-between',
         marginTop: Dimension.windowHeight / 21,
-        marginHorizontal: Dimension.windowWidth / 13,
+        marginHorizontal: Dimension.windowWidth / 18,
         marginBottom: Dimension.windowHeight / 60,
     },
     iconContainer: {
@@ -50,7 +53,8 @@ const styles = StyleSheet.create({
         fontFamily: 'SFProDisplay-Medium ',
         // fontWeight: 'bold',
         textAlign: 'center',
-        marginHorizontal: 'auto',
+        // alignItems: 'center',
+        // marginHorizontal: 'auto',
         color: Color.black
     },
 });

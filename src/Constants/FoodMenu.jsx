@@ -36,7 +36,8 @@ export const FoodCartItems = [
       price: 'N1,900',
       img: require('../../assets/images/bur1.png'),
       images: [require('../../assets/images/bur1.png'), require('../../assets/images/bur2.png')],
-      category: 'Foods'
+      category: 'Foods',
+      // quantity: 1
    },
    {
       id: 2,
@@ -44,7 +45,8 @@ export const FoodCartItems = [
       price: 'N1,900',
       img: require('../../assets/images/potato.png'),
       images: [require('../../assets/images/potato.png'), require('../../assets/images/pizza.png')],
-      category: 'Snack'
+      category: 'Snack',
+      // quantity: 1
    },
    {
       id: 3,
@@ -52,7 +54,8 @@ export const FoodCartItems = [
       price: 'N2,100',
       img: require('../../assets/images/pizza.png'),
       images: [require('../../assets/images/potato.png'), require('../../assets/images/pizza.png')],
-      category: 'Foods'
+      category: 'Foods',
+      // quantity: 1
    },
    {
       id: 4,
@@ -60,7 +63,8 @@ export const FoodCartItems = [
       price: 'N1,200',
       img: require('../../assets/images/fries.png'),
       images: [require('../../assets/images/potato.png'), require('../../assets/images/pizza.png')],
-      category: 'Snack'
+      category: 'Snack',
+      // quantity: 1
    },
    {
       id: 5,
@@ -68,7 +72,8 @@ export const FoodCartItems = [
       price: 'N500',
       img: require('../../assets/images/blue.png'),
       images: [require('../../assets/images/potato.png'), require('../../assets/images/pizza.png')],
-      category: 'Drinks'
+      category: 'Drinks',
+      // quantity: 1
    },
    {
       id: 6,
@@ -76,7 +81,8 @@ export const FoodCartItems = [
       price: 'N800',
       img: require('../../assets/images/orange.png'),
       images: [require('../../assets/images/potato.png'), require('../../assets/images/pizza.png')],
-      category: 'Drinks'
+      category: 'Drinks',
+      // quantity: 1
    },
    {
       id: 7,
@@ -84,7 +90,8 @@ export const FoodCartItems = [
       price: 'N800',
       img: require('../../assets/images/sauce1.png'),
       images: [require('../../assets/images/potato.png'), require('../../assets/images/pizza.png')],
-      category: 'Sauce'
+      category: 'Sauce',
+      // quantity: 1
    },
    {
       id: 8,

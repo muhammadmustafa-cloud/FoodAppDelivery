@@ -15,7 +15,7 @@ const DrawerScreenWrapper = ({ children }) => {
         ],
         borderRadius: interpolate(progress.value, [0, 1], [0, 20], 'clamp'),
         overflow: 'hidden',
-        // elevation: 10
+        
         
     }))
     return (
@@ -29,6 +29,7 @@ export default DrawerScreenWrapper
 
 const styles = StyleSheet.create({
     container: {
-        flex: 1
+        flex: 1,
+        // elevation: 20
     }
 })

@@ -6,21 +6,20 @@ import { GestureHandlerRootView, PanGestureHandler } from 'react-native-gesture-
 import Animated, { useAnimatedGestureHandler, useAnimatedStyle, useSharedValue, withTiming, runOnJS } from 'react-native-reanimated';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import { useDispatch, useSelector } from 'react-redux';
-import { removeItemFromCart } from '../redux/action/Action';
+import { removeItemFromCart, updateItemQuantity } from '../redux/action/Action';
 import Dimension from '../Constants/Dimension';
 import Header from '../Components/Header';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
-import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 
-const { width: screenWidth, height: screenHeight } = Dimensions.get('window');
+const { width: screenWidth } = Dimensions.get('window');
 
 const SwipeableItem = ({ item, index, onDelete }) => {
-    const [count, setCount] = useState(1)
     const translateX = useSharedValue(0);
-    const itemHeight = useSharedValue(130);
-    const viewMarginBottom = useSharedValue('5%');
+    const itemHeight = useSharedValue(Dimension.windowHeight*0.1);
+    const viewMarginBottom = useSharedValue(Dimension.windowHeight*0.09);
     const opacity = useSharedValue(1);
     const translate_X_threshold = -screenWidth * 0.3;
+    const dispatch = useDispatch();
 
     const panGesture = useAnimatedGestureHandler({
         onActive: (event) => {
@@ -59,13 +58,14 @@ const SwipeableItem = ({ item, index, onDelete }) => {
             opacity: opacity.value,
         };
     });
+
     const handleIncrement = () => {
-        setCount(count + 1);
+        dispatch(updateItemQuantity(item.id, item.quantity + 1));
     };
 
     const handleDecrement = () => {
-        if (count > 1) {
-            setCount(count - 1);
+        if (item.quantity > 1) {
+            dispatch(updateItemQuantity(item.id, item.quantity - 1));
         }
     };
 
@@ -84,10 +84,10 @@ const SwipeableItem = ({ item, index, onDelete }) => {
                         <Text style={styles.itemPrice}>{item.price}</Text>
                     </View>
                     <View style={styles.itemActions}>
-                    <TouchableOpacity onPress={handleDecrement}>
+                        <TouchableOpacity onPress={handleDecrement}>
                             <Text style={styles.actionText}>-</Text>
                         </TouchableOpacity>
-                        <Text style={styles.actionText}>{count}</Text>
+                        <Text style={styles.actionText}>{item.quantity}</Text>
                         <TouchableOpacity onPress={handleIncrement}>
                             <Text style={styles.actionText}>+</Text>
                         </TouchableOpacity>
@@ -99,7 +99,8 @@ const SwipeableItem = ({ item, index, onDelete }) => {
 };
 
 const Cart = ({ navigation }) => {
-    const itemsCart = useSelector(state => state);
+    const itemsCart = useSelector(state => state.addItemToCart);
+    console.log('items, ', itemsCart)
     const dispatch = useDispatch();
 
     const removeItem = (index) => {
@@ -146,7 +147,7 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         paddingHorizontal: '5%',
-        paddingTop: '10%',
+        paddingTop: Dimension.windowHeight*0.02,
     },
     header: {
         flexDirection: 'row',
@@ -184,10 +185,12 @@ const styles = StyleSheet.create({
         color: Color.white,
     },
     swipeableItemContainer: {
-        width: '80%',
+        width: '90%',
         marginHorizontal: 'auto',
         display: 'flex',
         justifyContent: 'center',
+        paddingTop: Dimension.windowHeight*0.06,
+        elevation: 5
     },
     iconContainer: {
         height: 50,
@@ -210,6 +213,7 @@ const styles = StyleSheet.create({
         width: '100%',
         overflow: 'hidden',
         paddingRight: 7,
+        elevation: 4
     },
     imageContainer: {
         alignItems: 'center',
@@ -217,7 +221,7 @@ const styles = StyleSheet.create({
     },
     itemImage: {
         width: 110,
-        height: 80,
+        height: Dimension.windowHeight*0.09,
     },
     itemDetails: {
         flex: 1,
@@ -227,6 +231,7 @@ const styles = StyleSheet.create({
         color: Color.black,
         fontFamily: 'SFProDisplay-Bold',
         fontSize: 18,
+        marginBottom: Dimension.windowHeight*0.01
     },
     itemPrice: {
         color: Color.orangeColor,
@@ -236,11 +241,11 @@ const styles = StyleSheet.create({
     itemActions: {
         backgroundColor: Color.orangeColor,
         flexDirection: 'row',
-        gap: 8,
+        gap: Dimension.windowWidth*0.04,
         justifyContent: 'center',
         alignItems: 'center',
-        paddingHorizontal: 5,
-        paddingVertical: 2,
+        paddingHorizontal: Dimension.windowWidth*0.03,
+        paddingVertical: Dimension.windowHeight*0.005,
         borderRadius: 15,
         position: 'absolute',
         bottom: 15,

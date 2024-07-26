@@ -13,6 +13,10 @@ import PrivacyPolicy from '../Screens/PrivacyPolicy';
 import Security from '../Screens/Security';
 import MainProfile from '../Screens/MainProfile';
 import Dimension from '../Constants/Dimension';
+import CustomDrawerContent from '../Components/CustomDrawerContent';
+import { Divider } from 'react-native-paper';
+import Signout from '../Components/Signout';
+// import CustomDrawerContent from './CustomDrawerContent';
 
 const Drawer = createDrawerNavigator();
 
@@ -27,7 +31,8 @@ const BackButton = () => {
 
 const DrawerNavigation = () => {
   return (
-    <Drawer.Navigator 
+    <Drawer.Navigator
+      drawerContent={(props) => <CustomDrawerContent {...props} />}
       screenOptions={{
         swipeEnabled: false,
         drawerActiveBackgroundColor: 'transparent',
@@ -36,7 +41,7 @@ const DrawerNavigation = () => {
         overlayColor: 'transparent',
         drawerStyle: {
           backgroundColor: Color.orangeColor,
-          width: "60%"
+          width: "60%",
         },
         sceneContainerStyle: {
           backgroundColor: Color.orangeColor,
@@ -51,8 +56,9 @@ const DrawerNavigation = () => {
           fontSize: 16,
           fontFamily: "Poppins-Medium",
           marginLeft: -10,
-          // height: Dimension.windowHeight,
-          marginTop: Dimension.windowHeight/180
+        },
+        drawerItemStyle: {
+          // marginVertical: 5,
         },
       }}
     >
@@ -62,11 +68,12 @@ const DrawerNavigation = () => {
         headerShown: false,
         headerShadowVisible: false,
         drawerIcon: () => (
-          <FontAwesome name='home' size={30} color={Color.white} />
+          <FontAwesome name='home' size={25} color={Color.white} />
         ),
       }}
         component={BottomTabNavigation}
       />
+      {/* <Divider/> */}
       <Drawer.Screen name='MyProfile'
         options={{
           drawerLabel: 'Profile',
@@ -81,7 +88,7 @@ const DrawerNavigation = () => {
           headerTitle: '',
           headerShadowVisible: false,
           drawerIcon: () => (
-            <FontAwesome name='user' size={30} color={Color.white} />
+            <FontAwesome name='user' size={25} color={Color.white} />
           ),
         }}
         component={MainProfile}
@@ -96,9 +103,10 @@ const DrawerNavigation = () => {
             elevation: 0, // Remove shadow on Android
             shadowOpacity: 0, // Remove shadow on iOS
           },
+          headerShown: false,
           headerShadowVisible: false,
         drawerIcon: () => (
-          <CartIcon name='cart-arrow-down' size={30} color={Color.white} />
+          <CartIcon name='cart-arrow-down' size={25} color={Color.white} />
         ),
       }}
         component={Order}
@@ -116,7 +124,7 @@ const DrawerNavigation = () => {
         },
         headerTitle: '',
         drawerIcon: () => (
-          <MaterialIcons name='local-offer' size={30} color={Color.white} />
+          <MaterialIcons name='local-offer' size={25} color={Color.white} />
         ),
       }}
         component={Offers}
@@ -134,8 +142,7 @@ const DrawerNavigation = () => {
           headerTitle: 'Privacy Policy',
           headerShadowVisible: false,
           drawerIcon: () => (
-            <MaterialIcons name='sticky-note-2' size={30} color={Color.white} />
-            // <FontAwesome name='user' size={30} color={Color.white} />
+            <MaterialIcons name='sticky-note-2' size={25} color={Color.white} />
           ),
       }}
         component={PrivacyPolicy}
@@ -151,7 +158,7 @@ const DrawerNavigation = () => {
           shadowOpacity: 0,
         },
         drawerIcon: () => (
-          <MaterialIcons name='security' size={30} color={Color.white} />
+          <MaterialIcons name='security' size={25} color={Color.white} />
         ),
       }}
         component={Security}

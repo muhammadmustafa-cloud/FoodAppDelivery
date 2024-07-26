@@ -1,4 +1,5 @@
-import { ADD_ITEM, REMOVE_ITEM } from "../ActionTypes";
+// Actions.js
+import { ADD_ITEM, REMOVE_ITEM, UPDATE_ITEM_QUANTITY } from "../ActionTypes";
 
 export const addItemToCart = (item) => ({
     type: ADD_ITEM,
@@ -11,7 +12,22 @@ export const addItemToCart = (item) => ({
     },
 });
 
-export const removeItemFromCart = index => ({
+// export const addItemToCart = result => ({
+//     type: ADD_ITEM,
+//     payload: { result }
+//   })
+
+
+
+export const updateItemQuantity = (itemId, quantity) => ({
+    type: UPDATE_ITEM_QUANTITY,
+    payload: {
+        id: itemId,
+        quantity,
+    },
+});
+
+export const removeItemFromCart = (index) => ({
     type: REMOVE_ITEM,
     payload: index,
 });
